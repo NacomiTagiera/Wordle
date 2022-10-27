@@ -1,3 +1,5 @@
+# Wordle
+
 Guess the WORDLE in 6 tries.
 
 Each guess must be a valid 5-letter word. Hit the enter button to submit.
