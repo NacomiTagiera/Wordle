@@ -1,6 +1,12 @@
 import Head from "next/head";
 
+import Instructions from "@/components/Instructions";
+
 export default function Home() {
+  const handleCloseInstructions = () => {
+    return 0;
+  };
+
   return (
     <>
       <Head>
@@ -9,6 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Instructions open={true} onClose={handleCloseInstructions} />
     </>
   );
 }

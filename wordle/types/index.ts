@@ -1,12 +1,15 @@
 export interface GameState {
   boardState: string[];
   currentRowIndex: number;
-  letterStatus: Record<string, LetterStatus>;
-  message: string;
+  keyboardletterState: { [letter: string]: LetterState };
   solution: string;
   status: GameStatus;
 }
 
-export type GameStatus = "FAIL" | "IN_PROGRESS" | "WIN";
+export type GameStatus = "fail" | "playing" | "win";
 
-export type LetterStatus = "absent" | "correct" | "present";
+export enum LetterState {
+  Absent,
+  Correct,
+  Present,
+}
