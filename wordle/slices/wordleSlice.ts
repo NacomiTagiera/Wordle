@@ -4,7 +4,7 @@ import { GameState } from "@/types";
 const initialState: GameState = {
   boardState: ["", "", "", "", "", ""],
   currentRowIndex: 0,
-  keyboardletterState: {},
+  keyboardLetterState: {},
   solution: "",
   status: "playing",
 };
