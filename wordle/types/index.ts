@@ -1,5 +1,5 @@
 export interface GameState {
-  boardState: string[];
+  boardState: Array<string>;
   currentRowIndex: number;
   keyboardLetterState: { [letter: string]: LetterState };
   solution: string;
@@ -8,8 +8,4 @@ export interface GameState {
 
 export type GameStatus = "fail" | "playing" | "win";
 
-export enum LetterState {
-  Absent,
-  Correct,
-  Present,
-}
+export type LetterState = "absent" | "correct" | "present";

@@ -1,37 +1,56 @@
 import { useState } from "react";
 
-import { Button, Typography } from "@mui/material";
-import HelpIcon from "@mui/icons-material/Help";
+import { Button, Stack, Typography } from "@mui/material";
+import { Help, RestartAlt } from "@mui/icons-material";
 
+import { useDispatchWordle } from "@/slices/wordleSlice";
 import Instructions from "./Instructions";
 
+const iconStyles = {
+  color: "#000",
+  fontSize: "5rem",
+};
+
 export default function Header() {
+  const { resetGame } = useDispatchWordle();
+
   const [instructionsOpen, setInstructionsOpen] = useState<boolean>(false);
+
+  const handleResetGame = () => {
+    resetGame();
+  };
 
   const handleToggleInstructions = () => {
     setInstructionsOpen((prevState) => !prevState);
   };
 
   return (
-    <header>
-      <Button
-        sx={{ position: "absolute", top: 0, right: 0 }}
-        onClick={handleToggleInstructions}
-      >
-        <HelpIcon sx={{ color: "#000", fontSize: "4rem" }} />
+    <Stack
+      component="header"
+      direction="row"
+      borderBottom="5px solid #000"
+      marginX="auto"
+      maxWidth="max-content"
+      spacing={5}
+    >
+      <Button onClick={handleToggleInstructions}>
+        <Help sx={iconStyles} />
       </Button>
       <Typography
         component="h1"
-        fontSize="5rem"
+        fontSize="6rem"
         fontWeight="800"
         textAlign="center"
       >
         Wordle
       </Typography>
+      <Button onClick={handleResetGame}>
+        <RestartAlt sx={iconStyles} />
+      </Button>
       <Instructions
         open={instructionsOpen}
         onClose={handleToggleInstructions}
       />
-    </header>
+    </Stack>
   );
 }

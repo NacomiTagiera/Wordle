@@ -34,7 +34,7 @@ export default function Modal({ children, onClose, open, title }: Props) {
           onClick={onClose}
           sx={{
             position: "absolute",
-            left: 5,
+            right: 5,
             top: 5,
           }}
         >
