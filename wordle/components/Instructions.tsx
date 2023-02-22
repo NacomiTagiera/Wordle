@@ -7,21 +7,34 @@ interface Props {
   onClose: () => void;
 }
 
-export default function Instructions({ open = true, onClose }: Props) {
+const listItemStyles = {
+  display: "list-item",
+  marginBottom: "0.5rem",
+};
+
+const spanStyles = {
+  fontWeight: 700,
+  letterSpacing: "1px",
+};
+
+export default function Instructions({ open, onClose }: Props) {
   return (
     <Modal open={open} onClose={onClose} title="how to play">
-      <Typography
-        component="p"
-        fontSize="2rem"
-        pb={4}
-        textAlign="justify"
-        variant="body1"
-      >
-        The goal of the game is to guess the word within <b>six</b> tries. Each
-        guess should be a <b>valid five-letter</b> word. Hit the enter button to
-        submit your guess. After each guess the color of the tiles will change
-        to indicate how close your guess was to the answer.
-      </Typography>
+      <section>
+        <Typography component="h2" variant="h4">
+          Guess the <span style={spanStyles}>WORDLE </span>in 6 tries.
+        </Typography>
+        <ul>
+          <li style={listItemStyles}>
+            Each guess must be a valid 5-letter word. Hit the enter button to
+            submit.
+          </li>
+          <li style={listItemStyles}>
+            After each guess, the color of the tiles will change to show how
+            close your guess was to the word.
+          </li>
+        </ul>
+      </section>
     </Modal>
   );
 }

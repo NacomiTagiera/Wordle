@@ -8,7 +8,7 @@ import Instructions from "./Instructions";
 
 const iconStyles = {
   color: "#000",
-  fontSize: "5rem",
+  fontSize: "4.5rem",
 };
 
 export default function Header() {
@@ -33,18 +33,19 @@ export default function Header() {
       maxWidth="max-content"
       spacing={5}
     >
-      <Button onClick={handleToggleInstructions}>
+      <Button aria-label="Help" onClick={handleToggleInstructions}>
         <Help sx={iconStyles} />
       </Button>
       <Typography
         component="h1"
         fontSize="6rem"
         fontWeight="800"
+        letterSpacing="2px"
         textAlign="center"
       >
         Wordle
       </Typography>
-      <Button onClick={handleResetGame}>
+      <Button aria-label="Restart" onClick={handleResetGame}>
         <RestartAlt sx={iconStyles} />
       </Button>
       <Instructions
