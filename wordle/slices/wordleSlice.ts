@@ -4,7 +4,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 
-import { useAppDispatch } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { GameState } from "@/types";
 import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from "@/lib/word-utils";
 import { words } from "@/db";
@@ -57,6 +57,14 @@ export const wordleSlice = createSlice({
     },
   },
 });
+
+export const useGetBoardRows = () =>
+  useAppSelector((state) =>
+    state.boardState.map((letters, rowIndex) => ({
+      letters,
+      lettersState: state.keyboardLetterState[rowIndex],
+    }))
+  );
 
 export const useDispatchWordle = () => {
   const { actions } = wordleSlice;

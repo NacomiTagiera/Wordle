@@ -1,8 +1,9 @@
 import Head from "next/head";
 
 import { useDispatchWordle } from "@/slices/wordleSlice";
+import Board from "@/components/Gameboard";
 import Header from "@/components/Header";
-import Keyboard from "@/components/keyboard";
+import Keyboard from "@/components/Keyboard";
 
 export default function Home() {
   const { addLetter, removeLetter, submitGuess } = useDispatchWordle();
@@ -31,6 +32,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <Board />
       <Keyboard
         onBackspaceClick={handleBackspaceClick}
         onEnterClick={handleEnterClick}
