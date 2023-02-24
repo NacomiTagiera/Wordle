@@ -16,7 +16,12 @@ export default function Board() {
       }}
     >
       {rows.map(({ letters, lettersState }, index) => (
-        <Row key={index} ariaLabel={"Row" + (index + 1)} letters={letters} />
+        <Row
+          key={index}
+          ariaLabel={"Row" + (index + 1)}
+          letters={letters}
+          lettersState={lettersState}
+        />
       ))}
     </div>
   );

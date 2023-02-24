@@ -33,6 +33,7 @@ export default function Tile({ letter, letterState }: Props) {
         justifyContent: "center",
         backgroundColor: bgColor,
         border: letterState ? "none" : "2px solid #d3d6da",
+        color: letterState ? "#fff" : "#000",
         fontSize: "3rem",
         fontWeight: 700,
         height: "6rem",

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Stack } from "@mui/system";
 
 import { useDispatchWordle } from "@/slices/wordleSlice";
 import Board from "@/components/Gameboard";
@@ -21,7 +22,12 @@ export default function Home() {
   };
 
   return (
-    <>
+    <Stack
+      component="main"
+      alignItems="center"
+      justifyContent="center"
+      spacing={10}
+    >
       <Head>
         <title>Wordle Clone</title>
         <meta
@@ -38,6 +44,6 @@ export default function Home() {
         onEnterClick={handleEnterClick}
         onLetterClick={handleLetterClick}
       />
-    </>
+    </Stack>
   );
 }

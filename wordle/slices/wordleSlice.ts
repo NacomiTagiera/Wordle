@@ -12,7 +12,7 @@ import { words } from "@/db";
 const initialState: GameState = {
   boardState: new Array(NUMBER_OF_ROWS).fill(""),
   currentRowIndex: 0,
-  keyboardLetterState: {},
+  keyboardLetterState: [],
   solution: "",
   status: "playing",
 };
@@ -39,7 +39,7 @@ export const wordleSlice = createSlice({
     resetGame: (state) => {
       state.boardState = new Array(NUMBER_OF_ROWS).fill("");
       state.currentRowIndex = 0;
-      state.keyboardLetterState = {};
+      state.keyboardLetterState = [];
       state.solution = "";
       state.status = "playing";
     },

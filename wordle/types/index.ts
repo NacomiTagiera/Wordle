@@ -1,7 +1,7 @@
 export interface GameState {
   boardState: Array<string>;
   currentRowIndex: number;
-  keyboardLetterState: { [letter: string]: LetterState };
+  keyboardLetterState: Array<Array<LetterState>>;
   solution: string;
   status: GameStatus;
 }
