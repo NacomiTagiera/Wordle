@@ -19,7 +19,7 @@ export default function Key({
 
   switch (letterState) {
     case "absent":
-      bgColor = "#3a3a3c";
+      bgColor = "#787c7e";
       break;
     case "correct":
       bgColor = "#538d4e";

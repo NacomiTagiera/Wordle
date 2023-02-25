@@ -1,6 +1,8 @@
 import { Stack } from "@mui/material";
 import BackspaceIcon from "@mui/icons-material/Backspace";
+
 import Key from "./Key";
+import { useGetLetterState } from "@/slices/wordleSlice";
 
 interface Props {
   onBackspaceClick: () => void;
@@ -19,6 +21,8 @@ export default function Keyboard({
   onEnterClick,
   onLetterClick,
 }: Props) {
+  const letterStatus = useGetLetterState();
+
   return (
     <Stack alignItems="center" justifyContent="center" spacing="1rem">
       {keyboardRows.map((row, index) => (
@@ -47,7 +51,7 @@ export default function Keyboard({
               return (
                 <Key
                   key={letterIndex}
-                  // letterState={} need to add here sth
+                  letterState={letterStatus[letter]}
                   onClick={onLetterClick.bind(null, letter)}
                 >
                   {letter}

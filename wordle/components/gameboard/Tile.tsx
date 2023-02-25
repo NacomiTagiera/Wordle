@@ -10,7 +10,7 @@ export default function Tile({ letter, letterState }: Props) {
   switch (letterState) {
     case "absent":
       ariaLabel = `${letter} absent`;
-      bgColor = "#3a3a3c";
+      bgColor = "#787c7e";
       break;
     case "correct":
       ariaLabel = `${letter} correct`;

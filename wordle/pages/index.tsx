@@ -1,13 +1,14 @@
 import Head from "next/head";
 import { Stack } from "@mui/system";
 
-import { useDispatchWordle } from "@/slices/wordleSlice";
 import Board from "@/components/Gameboard";
 import Header from "@/components/Header";
 import Keyboard from "@/components/Keyboard";
+import { useDispatchWordle } from "@/slices/wordleSlice";
 
 export default function Home() {
-  const { addLetter, removeLetter, submitGuess } = useDispatchWordle();
+  const { addLetter, removeLetter, submitGuess, setSolution } =
+    useDispatchWordle();
 
   const handleLetterClick = (letter: string) => {
     addLetter(letter);
