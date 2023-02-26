@@ -6,19 +6,23 @@ interface Props {
 export default function Tile({ letter, letterState }: Props) {
   let ariaLabel = "empty";
   let bgColor = "transparent";
+  let border = "2px solid #d3d6da";
 
   switch (letterState) {
     case "absent":
       ariaLabel = `${letter} absent`;
       bgColor = "#787c7e";
+      border = "none";
       break;
     case "correct":
       ariaLabel = `${letter} correct`;
       bgColor = "#538d4e";
+      border = "none";
       break;
     case "present":
-      ariaLabel = `${letter} present`;
+      ariaLabel = `${letter.toUpperCase()} present`;
       bgColor = "#b59f3b";
+      border = "none";
       break;
   }
 
@@ -32,7 +36,7 @@ export default function Tile({ letter, letterState }: Props) {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: bgColor,
-        border: letterState ? "none" : "2px solid #d3d6da",
+        border: letter && !letterState ? "2px solid #000" : border,
         color: letterState ? "#fff" : "#000",
         fontSize: "3rem",
         fontWeight: 700,

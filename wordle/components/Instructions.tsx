@@ -85,10 +85,16 @@ export default function Instructions({ open, onClose }: Props) {
           </div>
         ))}
         <Divider variant="middle" />
-        <p>
+        <Typography
+          component="p"
+          variant="body1"
+          fontSize="1.6rem"
+          paddingY={1}
+          textAlign="center"
+        >
           Press the reset button (<RestartAlt fontSize="large" />) or reload the
           page for a new puzzle to solve.
-        </p>
+        </Typography>
       </section>
     </Modal>
   );
