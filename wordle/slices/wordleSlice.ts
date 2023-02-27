@@ -53,8 +53,8 @@ export const wordleSlice = createSlice({
       state.solution = getRandomWord();
       state.status = "playing";
     },
-    setSolution: (state, action: PayloadAction<string>) => {
-      state.solution = action.payload;
+    resetMessage: (state) => {
+      state.message = { message: "", duration: 1500 };
     },
     submitGuess: (state) => {
       const guess = state.boardState[state.currentRowIndex];
@@ -91,13 +91,14 @@ export const wordleSlice = createSlice({
 
       if (boardRowState.every((state) => state === "correct")) {
         state.status === "win";
-        state.message.message = "You win!";
+        state.message = { message: "You win!", duration: 4000 };
       }
 
       state.currentRowIndex++;
 
       if (state.currentRowIndex === state.boardState.length) {
         state.status = "fail";
+        state.message = { message: state.solution, duration: 0 };
       }
     },
   },
@@ -116,6 +117,8 @@ export const useGetBoardRows = () =>
       lettersState: state.boardRowState[rowIndex],
     }))
   );
+
+export const useGetGameStatus = () => useAppSelector((state) => state.status);
 
 export const useGetLetterState = () =>
   useAppSelector((state) => state.keyboardLetterState);

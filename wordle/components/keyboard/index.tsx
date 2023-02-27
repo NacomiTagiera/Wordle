@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { Stack } from "@mui/material";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
 import Key from "./Key";
-import { useGetLetterState } from "@/slices/wordleSlice";
+import { useGetGameStatus, useGetLetterState } from "@/slices/wordleSlice";
 
 interface Props {
   onBackspaceClick: () => void;
@@ -22,6 +23,32 @@ export default function Keyboard({
   onLetterClick,
 }: Props) {
   const letterStatus = useGetLetterState();
+  const gameStatus = useGetGameStatus();
+
+  useEffect(() => {
+    const handleKeyUp = (event: KeyboardEvent) => {
+      const key = event.key;
+
+      if (key === "Backspace") {
+        onBackspaceClick();
+        return;
+      }
+
+      if (key === "Enter") {
+        onEnterClick();
+        return;
+      }
+
+      if (key.match(/^[a-z]$/i)) {
+        onLetterClick(key.toLocaleLowerCase());
+      }
+    };
+
+    if (gameStatus === "playing") window.addEventListener("keyup", handleKeyUp);
+    else window.removeEventListener("keyup", handleKeyUp);
+
+    return () => window.removeEventListener("keyup", handleKeyUp);
+  }, [onBackspaceClick, onEnterClick, onLetterClick, gameStatus]);
 
   return (
     <Stack alignItems="center" justifyContent="center" spacing="1rem">

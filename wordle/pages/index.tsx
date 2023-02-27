@@ -1,34 +1,11 @@
 import Head from "next/head";
-import { Stack } from "@mui/system";
-
-import Board from "@/components/Gameboard";
-import Header from "@/components/Header";
-import Keyboard from "@/components/Keyboard";
-import { useDispatchWordle } from "@/slices/wordleSlice";
+import { Provider } from "react-redux";
+import { store } from "@/app/store";
+import Game from "@/components/Game";
 
 export default function Home() {
-  const { addLetter, removeLetter, submitGuess, setSolution } =
-    useDispatchWordle();
-
-  const handleLetterClick = (letter: string) => {
-    addLetter(letter);
-  };
-
-  const handleEnterClick = () => {
-    submitGuess();
-  };
-
-  const handleBackspaceClick = () => {
-    removeLetter();
-  };
-
   return (
-    <Stack
-      component="main"
-      alignItems="center"
-      justifyContent="center"
-      spacing={10}
-    >
+    <Provider store={store}>
       <Head>
         <title>Wordle Clone</title>
         <meta
@@ -38,13 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <Board />
-      <Keyboard
-        onBackspaceClick={handleBackspaceClick}
-        onEnterClick={handleEnterClick}
-        onLetterClick={handleLetterClick}
-      />
-    </Stack>
+      <Game />
+    </Provider>
   );
 }
