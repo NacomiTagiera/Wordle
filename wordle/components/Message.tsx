@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { Card, Dialog } from "@mui/material";
+import { Snackbar } from "@mui/material";
 import { useDispatchWordle, useGetMessage } from "@/slices/wordleSlice";
 
 export default function Message() {
   const { resetMessage } = useDispatchWordle();
   const { message, duration } = useGetMessage();
 
-  const handleCloseDialog = () => {
+  const handleCloseSnackbar = () => {
     resetMessage();
   };
 
@@ -25,26 +25,24 @@ export default function Message() {
   }, [message, duration]);
 
   return (
-    <Dialog
-      keepMounted
+    <Snackbar
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
       open={!!message}
-      onClose={handleCloseDialog}
-      slotProps={{
-        backdrop: { style: { backgroundColor: "transparent" } },
-      }}
+      onClose={handleCloseSnackbar}
     >
-      <Card
-        sx={{
-          backgroundColor: "#303030",
+      <p
+        style={{
+          backgroundColor: "#121213",
           color: "#fff",
-          position: "fixed",
-          top: "10%",
-          left: "50%",
-          transform: "translate(-50%, 10%)",
+          fontSize: "14px",
+          fontWeight: "600",
+          lineHeight: "16px",
+          borderRadius: "4px",
+          padding: message ? "13px" : 0,
         }}
       >
-        <p>{message}</p>
-      </Card>
-    </Dialog>
+        {message}
+      </p>
+    </Snackbar>
   );
 }

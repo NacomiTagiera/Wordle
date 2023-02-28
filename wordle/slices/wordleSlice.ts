@@ -91,7 +91,7 @@ export const wordleSlice = createSlice({
 
       if (boardRowState.every((state) => state === "correct")) {
         state.status === "win";
-        state.message = { message: "You win!", duration: 4000 };
+        state.message = { message: "You win!", duration: 0 };
       }
 
       state.currentRowIndex++;
