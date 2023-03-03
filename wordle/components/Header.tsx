@@ -8,7 +8,7 @@ import Instructions from "./Instructions";
 
 const iconStyles = {
   color: "#000",
-  fontSize: "4.5rem",
+  fontSize: "3.5rem",
 };
 
 export default function Header() {
@@ -28,19 +28,21 @@ export default function Header() {
     <Stack
       component="header"
       direction="row"
-      borderBottom="5px solid #000"
-      marginX="auto"
-      maxWidth="max-content"
-      spacing={5}
+      alignItems="center"
+      justifyContent="space-between"
+      borderBottom="1px solid #d3d6da"
+      width="100vw"
     >
       <Button aria-label="Help" onClick={handleToggleInstructions}>
         <Help sx={iconStyles} />
       </Button>
       <Typography
         component="h1"
-        fontSize="6rem"
-        fontWeight="800"
-        letterSpacing="2px"
+        fontFamily="serif"
+        fontSize="3.6rem"
+        fontWeight="700"
+        letterSpacing="1px"
+        py={1}
         textAlign="center"
       >
         Wordle

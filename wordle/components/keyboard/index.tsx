@@ -51,13 +51,13 @@ export default function Keyboard({
   }, [onBackspaceClick, onEnterClick, onLetterClick, gameStatus]);
 
   return (
-    <Stack alignItems="center" justifyContent="center" spacing="1rem">
+    <Stack alignItems="center" justifyContent="center" spacing="8px">
       {keyboardRows.map((row, index) => (
         <Stack
           key={index}
           direction="row"
           justifyContent="center"
-          spacing="0.5rem"
+          spacing="8px"
         >
           {Array.from(row).map((letter, letterIndex) => {
             if (letter === "enter") {
