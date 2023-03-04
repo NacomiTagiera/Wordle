@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Snackbar } from "@mui/material";
 import { useDispatchWordle, useGetMessage } from "@/slices/wordleSlice";
 
+import styles from "./Message.module.scss";
+
 export default function Message() {
   const { resetMessage } = useDispatchWordle();
   const { message, duration } = useGetMessage();
@@ -31,13 +33,8 @@ export default function Message() {
       onClose={handleCloseSnackbar}
     >
       <p
+        className={styles.message}
         style={{
-          backgroundColor: "#121213",
-          color: "#fff",
-          fontSize: "14px",
-          fontWeight: "600",
-          lineHeight: "16px",
-          borderRadius: "4px",
           padding: message ? "13px" : 0,
         }}
       >

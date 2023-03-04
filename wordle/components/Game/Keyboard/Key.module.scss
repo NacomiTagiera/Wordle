@@ -1,0 +1,35 @@
+.key {
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 600;
+  height: 58px;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--outline);
+  }
+
+  &:hover {
+    background-color: var(--light-gray);
+  }
+
+  &[data-state="absent"] {
+    background-color: var(--color-absent);
+    color: #fff;
+  }
+
+  &[data-state="correct"] {
+    background-color: var(--color-correct);
+    color: #fff;
+  }
+
+  &[data-state="present"] {
+    background-color: var(--color-present);
+    color: #fff;
+  }
+}

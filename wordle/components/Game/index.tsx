@@ -1,10 +1,10 @@
-import { Stack } from "@mui/system";
-
 import Board from "./Gameboard";
-import Header from "./Header";
+import Header from "../UI/Header";
 import Keyboard from "./Keyboard";
-import Message from "./Message";
+import Message from "../UI/Message";
 import { useDispatchWordle } from "@/slices/wordleSlice";
+
+import styles from "./Game.module.scss";
 
 export default function Game() {
   const { addLetter, removeLetter, submitGuess } = useDispatchWordle();
@@ -22,20 +22,17 @@ export default function Game() {
   };
 
   return (
-    <Stack
-      component="main"
-      alignItems="center"
-      justifyContent="center"
-      spacing={10}
-    >
+    <>
       <Header />
       <Message />
-      <Board />
-      <Keyboard
-        onBackspaceClick={handleBackspaceClick}
-        onEnterClick={handleEnterClick}
-        onLetterClick={handleLetterClick}
-      />
-    </Stack>
+      <main className={styles.game}>
+        <Board />
+        <Keyboard
+          onBackspaceClick={handleBackspaceClick}
+          onEnterClick={handleEnterClick}
+          onLetterClick={handleLetterClick}
+        />
+      </main>
+    </>
   );
 }

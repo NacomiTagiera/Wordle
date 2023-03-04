@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { Help, RestartAlt } from "@mui/icons-material";
 
 import { useDispatchWordle } from "@/slices/wordleSlice";
 import Instructions from "./Instructions";
+
+import styles from "./Header.module.scss";
 
 const iconStyles = {
   color: "#000",
@@ -25,28 +27,11 @@ export default function Header() {
   };
 
   return (
-    <Stack
-      component="header"
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      borderBottom="1px solid #d3d6da"
-      width="100vw"
-    >
+    <header className={styles.header}>
       <Button aria-label="Help" onClick={handleToggleInstructions}>
         <Help sx={iconStyles} />
       </Button>
-      <Typography
-        component="h1"
-        fontFamily="serif"
-        fontSize="3.6rem"
-        fontWeight="700"
-        letterSpacing="1px"
-        py={1}
-        textAlign="center"
-      >
-        Wordle
-      </Typography>
+      <h1 className={styles.title}>Wordle</h1>
       <Button aria-label="Restart" onClick={handleResetGame}>
         <RestartAlt sx={iconStyles} />
       </Button>
@@ -54,6 +39,6 @@ export default function Header() {
         open={instructionsOpen}
         onClose={handleToggleInstructions}
       />
-    </Stack>
+    </header>
   );
 }

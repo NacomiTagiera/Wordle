@@ -57,6 +57,8 @@ export const wordleSlice = createSlice({
       state.message = { message: "", duration: 1500 };
     },
     submitGuess: (state) => {
+      if (state.status !== "playing") return;
+
       const guess = state.boardState[state.currentRowIndex];
 
       if (!isGuessComplete(guess)) {
@@ -90,7 +92,7 @@ export const wordleSlice = createSlice({
       });
 
       if (boardRowState.every((state) => state === "correct")) {
-        state.status === "win";
+        state.status = "win";
         state.message = { message: "You win!", duration: 0 };
       }
 

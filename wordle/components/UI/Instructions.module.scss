@@ -1,0 +1,38 @@
+.container {
+  font-family: sans-serif;
+  font-size: 1.7rem;
+  line-height: 2rem;
+}
+
+.instructions {
+  font-weight: 500;
+  list-style-type: disc;
+  margin-block: 1em;
+  padding-left: 20px;
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  li::marker {
+    font-size: 18px;
+  }
+}
+
+.tile-container {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+}
+
+.example {
+  margin-top: 8px;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+}

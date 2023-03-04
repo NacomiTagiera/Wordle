@@ -9,33 +9,18 @@ import {
   Slide,
   Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
 import { TransitionProps } from "@mui/material/transitions";
 
-import Row, { RowProps } from "./Gameboard/Row";
+import Tile from "../Game/Gameboard/Tile";
+
+import styles from "./Instructions.module.scss";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
 
-const examples: RowProps[] = [
-  {
-    ariaLabel: "windy",
-    letters: "windy",
-    lettersState: ["correct"],
-  },
-  {
-    ariaLabel: "weird",
-    letters: "weird",
-    lettersState: ["correct", "present"],
-  },
-  {
-    ariaLabel: "weary",
-    letters: "weary",
-    lettersState: ["correct", "present", "absent"],
-  },
-];
+const examples = ["weary", "pills", "vague"];
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -55,7 +40,11 @@ export default function Instructions({ open, onClose }: Props) {
       TransitionComponent={Transition}
       transitionDuration={{ enter: 900, exit: 500 }}
     >
-      <Card variant="outlined" sx={{ color: grey[800], px: 3, py: 2 }}>
+      <Card
+        variant="outlined"
+        className={styles.container}
+        sx={{ px: 3, py: 2 }}
+      >
         <section>
           <Button
             aria-label="Close"
@@ -82,7 +71,7 @@ export default function Instructions({ open, onClose }: Props) {
           <Typography component="h2" variant="h4">
             Guess the <strong>WORDLE</strong> in 6 tries.
           </Typography>
-          <ul>
+          <ul className={styles.instructions}>
             <li>
               Each guess must be a valid 5-letter word. Hit the enter button to
               submit.
@@ -96,36 +85,20 @@ export default function Instructions({ open, onClose }: Props) {
             <strong>Examples</strong>
           </p>
           {examples.map((example, index) => (
-            <div key={index} style={{ marginBlock: "2.5rem" }}>
-              <Row
-                ariaLabel={example.ariaLabel}
-                letters={example.letters}
-                lettersState={example.lettersState}
-              />
-              {example.lettersState?.at(-1) === "correct" && (
-                <p>
-                  <strong style={{ textTransform: "uppercase" }}>
-                    {example.letters[example.lettersState.length - 1]}
-                  </strong>{" "}
-                  is in the word and in the correct spot.
-                </p>
-              )}
-              {example.lettersState?.at(-1) === "present" && (
-                <p>
-                  <strong style={{ textTransform: "uppercase" }}>
-                    {example.letters[example.lettersState.length - 1]}
-                  </strong>{" "}
-                  is in the word and but in the wrong spot.
-                </p>
-              )}
-              {example.lettersState?.at(-1) === "absent" && (
-                <p>
-                  <strong style={{ textTransform: "uppercase" }}>
-                    {example.letters[example.lettersState.length - 1]}
-                  </strong>{" "}
-                  is not in the word in any spot.
-                </p>
-              )}
+            <div key={index} className={styles.example} aria-label={example}>
+              {Array.from(example).map((letter, letterIndex) => (
+                <div
+                  key={letterIndex}
+                  className={styles["tile-container"]}
+                  aria-label={example + "-letters"}
+                >
+                  <Tile letter={letter} small />
+                </div>
+              ))}
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat, ab.
+              </p>
             </div>
           ))}
           <Divider variant="middle" />

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { Stack } from "@mui/material";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
 import Key from "./Key";
 import { useGetGameStatus, useGetLetterState } from "@/slices/wordleSlice";
+
+import styles from "./Keyboard.module.scss";
 
 interface Props {
   onBackspaceClick: () => void;
@@ -51,14 +52,9 @@ export default function Keyboard({
   }, [onBackspaceClick, onEnterClick, onLetterClick, gameStatus]);
 
   return (
-    <Stack alignItems="center" justifyContent="center" spacing="8px">
+    <div className={styles.keyboard}>
       {keyboardRows.map((row, index) => (
-        <Stack
-          key={index}
-          direction="row"
-          justifyContent="center"
-          spacing="8px"
-        >
+        <div key={index} className={styles.row}>
           {Array.from(row).map((letter, letterIndex) => {
             if (letter === "enter") {
               return (
@@ -69,11 +65,11 @@ export default function Keyboard({
             } else if (letter === "backspace") {
               return (
                 <Key key={letterIndex} onClick={onBackspaceClick} large>
-                  <BackspaceIcon sx={{ fontSize: "2.2rem" }} />
+                  <BackspaceIcon sx={{ fontSize: "2rem" }} />
                 </Key>
               );
             } else if (letter === "") {
-              return <div key={letterIndex} style={{ width: "0.8rem" }}></div>;
+              return <div key={letterIndex} style={{ flex: "0.5" }}></div>;
             } else {
               return (
                 <Key
@@ -86,8 +82,8 @@ export default function Keyboard({
               );
             }
           })}
-        </Stack>
+        </div>
       ))}
-    </Stack>
+    </div>
   );
 }
