@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Close, RestartAlt } from "@mui/icons-material";
 import {
   Button,
   Card,
@@ -9,6 +8,7 @@ import {
   Slide,
   Typography,
 } from "@mui/material";
+import { Close, RestartAlt } from "@mui/icons-material";
 import { TransitionProps } from "@mui/material/transitions";
 
 import Tile from "../Game/Gameboard/Tile";
@@ -59,7 +59,6 @@ export default function Instructions({ open, onClose }: Props) {
           </Button>
           <Typography
             component="h1"
-            color="#000"
             fontSize="3rem"
             fontWeight={700}
             pb={3}

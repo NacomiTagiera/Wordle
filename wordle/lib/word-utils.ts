@@ -1,5 +1,5 @@
-import { words } from "@/db";
 import { LetterState } from "@/types";
+import { words } from "@/db";
 
 export const NUMBER_OF_ROWS = 6;
 export const NUMBER_OF_LETTERS = 5;

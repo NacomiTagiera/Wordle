@@ -1,6 +1,6 @@
+import Tile from "./Tile";
 import { LetterState } from "@/types";
 import { NUMBER_OF_LETTERS } from "@/lib/word-utils";
-import Tile from "./Tile";
 
 import styles from "./Row.module.scss";
 

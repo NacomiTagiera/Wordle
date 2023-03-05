@@ -9,16 +9,16 @@ import styles from "./Game.module.scss";
 export default function Game() {
   const { addLetter, removeLetter, submitGuess } = useDispatchWordle();
 
-  const handleLetterClick = (letter: string) => {
-    addLetter(letter);
+  const handleBackspaceClick = () => {
+    removeLetter();
   };
 
   const handleEnterClick = () => {
     submitGuess();
   };
 
-  const handleBackspaceClick = () => {
-    removeLetter();
+  const handleLetterClick = (letter: string) => {
+    addLetter(letter);
   };
 
   return (

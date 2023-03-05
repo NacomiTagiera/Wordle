@@ -1,5 +1,6 @@
-import { useGetBoardRows } from "@/slices/wordleSlice";
 import Row from "./Row";
+import { useGetBoardRows } from "@/slices/wordleSlice";
+
 import styles from "./Gameboard.module.scss";
 
 export default function Board() {

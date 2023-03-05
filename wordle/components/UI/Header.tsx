@@ -3,15 +3,10 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { Help, RestartAlt } from "@mui/icons-material";
 
-import { useDispatchWordle } from "@/slices/wordleSlice";
 import Instructions from "./Instructions";
+import { useDispatchWordle } from "@/slices/wordleSlice";
 
 import styles from "./Header.module.scss";
-
-const iconStyles = {
-  color: "#000",
-  fontSize: "3.5rem",
-};
 
 export default function Header() {
   const { resetGame } = useDispatchWordle();
@@ -29,11 +24,11 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Button aria-label="Help" onClick={handleToggleInstructions}>
-        <Help sx={iconStyles} />
+        <Help className={styles.icon} />
       </Button>
       <h1 className={styles.title}>Wordle</h1>
       <Button aria-label="Restart" onClick={handleResetGame}>
-        <RestartAlt sx={iconStyles} />
+        <RestartAlt className={styles.icon} />
       </Button>
       <Instructions
         open={instructionsOpen}

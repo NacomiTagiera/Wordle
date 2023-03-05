@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 import { LetterState } from "@/types";
+
 import styles from "./Key.module.scss";
 
 interface Props {
