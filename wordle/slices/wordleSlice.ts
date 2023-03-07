@@ -6,13 +6,12 @@ import {
 
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { GameState } from "@/types";
+import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from "@/lib/constants";
 import {
   appraiseGuess,
   getRandomWord,
   isGuessComplete,
   isValidWord,
-  NUMBER_OF_LETTERS,
-  NUMBER_OF_ROWS,
 } from "@/lib/word-utils";
 
 const initialState: GameState = {

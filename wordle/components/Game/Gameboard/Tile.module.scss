@@ -2,9 +2,11 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
-  font-size: 3.5rem;
-  font-weight: bold;
+  font: {
+    family: var(--font-sans-serif);
+    size: 3.5rem;
+    weight: bold;
+  }
   line-height: 1;
   text-transform: uppercase;
   user-select: none;
@@ -25,7 +27,7 @@
   }
 
   @media (max-height: 600px) {
-    font-size: 1em;
+    font-size: 2rem;
   }
 
   &[data-state="absent"] {

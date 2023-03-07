@@ -20,7 +20,7 @@ export default function Key({
   return (
     <button
       className={styles.key}
-      style={{ flex: large ? 1.5 : 1, fontSize: large ? "12px" : "1.25em" }}
+      style={{ flex: large ? 1.5 : 1, fontSize: large ? "12px" : "16px" }}
       data-state={letterState}
       onClick={onClick}
     >

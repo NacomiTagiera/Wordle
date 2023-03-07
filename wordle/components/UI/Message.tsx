@@ -29,6 +29,7 @@ export default function Message() {
   return (
     <Snackbar
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      sx={{ mt: { xs: 7, md: 5 } }}
       open={!!message}
       onClose={handleCloseSnackbar}
     >

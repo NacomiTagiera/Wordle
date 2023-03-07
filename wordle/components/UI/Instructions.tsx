@@ -7,11 +7,14 @@ import {
   Divider,
   Slide,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { Close, RestartAlt } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 import { TransitionProps } from "@mui/material/transitions";
 
 import Tile from "../Game/Gameboard/Tile";
+import { examples } from "@/lib/constants";
 
 import styles from "./Instructions.module.scss";
 
@@ -19,8 +22,6 @@ interface Props {
   open: boolean;
   onClose: () => void;
 }
-
-const examples = ["weary", "pills", "vague"];
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -32,18 +33,23 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function Instructions({ open, onClose }: Props) {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Dialog
       keepMounted
-      onClose={onClose}
+      fullScreen={fullScreen}
       open={open}
+      scroll="body"
+      onClose={onClose}
       TransitionComponent={Transition}
       transitionDuration={{ enter: 900, exit: 500 }}
     >
       <Card
         variant="outlined"
         className={styles.container}
-        sx={{ px: 3, py: 2 }}
+        sx={{ px: 3, py: 1 }}
       >
         <section>
           <Button
@@ -57,16 +63,7 @@ export default function Instructions({ open, onClose }: Props) {
           >
             <Close sx={{ color: "#000", fontSize: "3rem" }} />
           </Button>
-          <Typography
-            component="h1"
-            fontSize="3rem"
-            fontWeight={700}
-            pb={3}
-            textAlign="center"
-            textTransform="uppercase"
-          >
-            how to play
-          </Typography>
+          <h1>how to play</h1>
           <Typography component="h2" variant="h4">
             Guess the <strong>WORDLE</strong> in 6 tries.
           </Typography>
@@ -83,34 +80,40 @@ export default function Instructions({ open, onClose }: Props) {
           <p>
             <strong>Examples</strong>
           </p>
-          {examples.map((example, index) => (
-            <div key={index} className={styles.example} aria-label={example}>
-              {Array.from(example).map((letter, letterIndex) => (
+          {examples.map((example, exampleIndex) => (
+            <div
+              key={exampleIndex}
+              className={styles.example}
+              aria-label={example.word}
+            >
+              {Array.from(example.word).map((letter, letterIndex) => (
                 <div
                   key={letterIndex}
                   className={styles["tile-container"]}
-                  aria-label={example + "-letters"}
+                  aria-label={example.word + "-letters"}
                 >
-                  <Tile letter={letter} small />
+                  <Tile
+                    letter={letter}
+                    letterState={
+                      exampleIndex === letterIndex
+                        ? example.letterState
+                        : undefined
+                    }
+                    small
+                  />
                 </div>
               ))}
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quaerat, ab.
+                <strong>{example.description.charAt(0)}</strong>
+                {example.description.substring(1)}
               </p>
             </div>
           ))}
           <Divider variant="middle" />
-          <Typography
-            component="p"
-            variant="body1"
-            fontSize="1.6rem"
-            paddingY={1}
-            textAlign="center"
-          >
+          <p>
             Press the reset button (<RestartAlt fontSize="large" />) or reload
             the page for a new puzzle to solve.
-          </Typography>
+          </p>
         </section>
       </Card>
     </Dialog>

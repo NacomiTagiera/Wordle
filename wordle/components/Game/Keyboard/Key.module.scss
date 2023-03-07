@@ -1,14 +1,23 @@
 .key {
   background-color: var(--light-gray);
-  border: none;
   border-radius: 4px;
+  border: 0;
   color: #000;
   cursor: pointer;
   font-weight: 600;
   height: 58px;
-  margin-right: 0.5rem;
+  margin-right: 6px;
+  padding: 0;
   text-transform: uppercase;
   user-select: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 
   &:focus-visible {
     outline: 2px solid var(--outline);
