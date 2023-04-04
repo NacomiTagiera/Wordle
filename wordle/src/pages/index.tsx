@@ -10,7 +10,7 @@ export default function Home() {
         <title>Wordle Clone</title>
         <meta
           name="description"
-          content="NextJS + Redux Toolkit Wordle clone. Guess the hidden five-letter word in 6 tries."
+          content="This is a clone of the popular word game - Wordle - built with Next.js, TypeScript, Redux Toolkit, Material UI, and Sass."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

@@ -4,9 +4,9 @@ import { Button } from "@mui/material";
 import { Help, RestartAlt } from "@mui/icons-material";
 
 import Instructions from "./Instructions";
-import { useDispatchWordle } from "@/slices/wordleSlice";
+import { useDispatchWordle } from "@/app/slices/wordleSlice";
 
-import styles from "./Header.module.scss";
+import styles from "@/styles/components/Header.module.scss";
 
 export default function Header() {
   const { resetGame } = useDispatchWordle();

@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
 import Key from "./Key";
-import { useGetGameStatus, useGetLetterState } from "@/slices/wordleSlice";
+import { useGetGameStatus, useGetLetterState } from "@/app/slices/wordleSlice";
 
-import styles from "./Keyboard.module.scss";
+import styles from "@/styles/components/Keyboard.module.scss";
 
 interface Props {
   onBackspaceClick: () => void;

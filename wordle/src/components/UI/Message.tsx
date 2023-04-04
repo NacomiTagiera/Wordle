@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Snackbar } from "@mui/material";
-import { useDispatchWordle, useGetMessage } from "@/slices/wordleSlice";
 
-import styles from "./Message.module.scss";
+import { useDispatchWordle, useGetMessage } from "@/app/slices/wordleSlice";
+
+import styles from "@/styles/components/Message.module.scss";
 
 export default function Message() {
   const { resetMessage } = useDispatchWordle();

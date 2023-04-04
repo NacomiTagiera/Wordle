@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import wordle from "@/slices/wordleSlice";
+import wordle from "./slices/wordleSlice";
 
 export const store = configureStore({
   reducer: wordle,

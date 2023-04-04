@@ -1,5 +1,5 @@
 import { LetterState } from "@/types";
-import styles from "./Tile.module.scss";
+import styles from "@/styles/components/Tile.module.scss";
 
 interface Props {
   letter: string;

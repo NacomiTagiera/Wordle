@@ -16,7 +16,7 @@ import { TransitionProps } from "@mui/material/transitions";
 import Tile from "../Game/Gameboard/Tile";
 import { examples } from "@/lib/constants";
 
-import styles from "./Instructions.module.scss";
+import styles from "@/styles/components/Instructions.module.scss";
 
 interface Props {
   open: boolean;

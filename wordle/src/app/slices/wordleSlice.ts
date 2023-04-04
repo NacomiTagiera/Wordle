@@ -4,7 +4,7 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { GameState } from "@/types";
 import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from "@/lib/constants";
 import {
@@ -112,7 +112,7 @@ export const useDispatchWordle = () => {
 };
 
 export const useGetBoardRows = () =>
-  useAppSelector((state) =>
+  useAppSelector((state: GameState) =>
     state.boardState.map((letters, rowIndex) => ({
       letters,
       lettersState: state.boardRowState[rowIndex],
