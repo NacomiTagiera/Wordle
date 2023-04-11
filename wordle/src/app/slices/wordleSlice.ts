@@ -90,20 +90,23 @@ export const wordleSlice = createSlice({
         }
       });
 
+      if (state.currentRowIndex === state.boardState.length - 1) {
+        state.status = "fail";
+        state.message = { message: state.solution, duration: 0 };
+      }
+
       if (boardRowState.every((state) => state === "correct")) {
         state.status = "win";
         state.message = { message: "You win!", duration: 0 };
       }
 
       state.currentRowIndex++;
-
-      if (state.currentRowIndex === state.boardState.length) {
-        state.status = "fail";
-        state.message = { message: state.solution, duration: 0 };
-      }
     },
   },
 });
+
+export const { addLetter, removeLetter, resetGame, resetMessage, submitGuess } =
+  wordleSlice.actions; //for tests
 
 export const useDispatchWordle = () => {
   const { actions } = wordleSlice;

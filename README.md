@@ -1,6 +1,6 @@
 # Wordle Clone
 
-This is a clone of the popular word game - [Wordle](https://www.nytimes.com/games/wordle/index.html) - built with Next.js, TypeScript, Redux Toolkit, Material UI, and Sass.
+This is a clone of a popular word game - [Wordle](https://www.nytimes.com/games/wordle/index.html).
 
 ### How to play
 
@@ -18,3 +18,8 @@ This is a clone of the popular word game - [Wordle](https://www.nytimes.com/game
 - [Material UI](https://mui.com/material-ui/) - A React UI framework that provides pre-built components and styling.
 - [Sass](https://sass-lang.com/documentation/) - A CSS preprocessor that makes it easy to create reusable styles.
 
+### Testing 
+
+The project includes tests for Redux Toolkit Slice using **Jest** and **React Testing Library**. To run all the tests, you can use:
+
+```npm run test```
