@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
 import Key from "./Key";
-import { useGetGameStatus, useGetLetterState } from "@/app/slices/wordleSlice";
+import {
+  useGetGameStatus,
+  useGetLetterState,
+} from "@/redux/slices/wordleSlice";
 
 import styles from "@/styles/components/Keyboard.module.scss";
 

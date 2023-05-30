@@ -4,7 +4,7 @@ import Board from "./Gameboard";
 import Header from "../UI/Header";
 import Keyboard from "./Keyboard";
 import Message from "../UI/Message";
-import { useDispatchWordle } from "@/app/slices/wordleSlice";
+import { useDispatchWordle } from "@/redux/slices/wordleSlice";
 
 import styles from "@/styles/components/Game.module.scss";
 

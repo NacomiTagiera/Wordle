@@ -1,5 +1,5 @@
 import Row from "./Row";
-import { useGetBoardRows } from "@/app/slices/wordleSlice";
+import { useGetBoardRows } from "@/redux/slices/wordleSlice";
 
 import styles from "@/styles/components/Gameboard.module.scss";
 

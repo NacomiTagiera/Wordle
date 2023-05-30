@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { Help, RestartAlt } from "@mui/icons-material";
 
 import Instructions from "./Instructions";
-import { useDispatchWordle } from "@/app/slices/wordleSlice";
+import { useDispatchWordle } from "@/redux/slices/wordleSlice";
 
 import styles from "@/styles/components/Header.module.scss";
 

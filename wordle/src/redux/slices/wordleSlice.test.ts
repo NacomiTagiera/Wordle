@@ -4,7 +4,7 @@ import wordle, {
   resetGame,
   resetMessage,
   submitGuess,
-} from "@/app/slices/wordleSlice";
+} from "@/redux/slices/wordleSlice";
 import { GameState } from "@/types";
 
 const initialState: GameState = {

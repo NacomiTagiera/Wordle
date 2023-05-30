@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Snackbar } from "@mui/material";
 
-import { useDispatchWordle, useGetMessage } from "@/app/slices/wordleSlice";
+import { useDispatchWordle, useGetMessage } from "@/redux/slices/wordleSlice";
 
 import styles from "@/styles/components/Message.module.scss";
 
