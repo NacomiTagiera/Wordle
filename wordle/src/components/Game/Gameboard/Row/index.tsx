@@ -1,8 +1,8 @@
-import Tile from "./Tile";
+import Tile from "../Tile";
 import { LetterState } from "@/types";
 import { NUMBER_OF_LETTERS } from "@/lib/constants";
 
-import styles from "@/styles/components/Row.module.scss";
+import styles from "./Row.module.scss";
 
 interface Props {
   ariaLabel: string;

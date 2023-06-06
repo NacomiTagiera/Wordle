@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { Help, RestartAlt } from "@mui/icons-material";
 
-import Instructions from "./Instructions";
+import Instructions from "../Instructions";
 import { useDispatchWordle } from "@/redux/slices/wordleSlice";
 
-import styles from "@/styles/components/Header.module.scss";
+import styles from "./Header.module.scss";
 
 export default function Header() {
   const { resetGame } = useDispatchWordle();
@@ -23,13 +23,13 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Button aria-label="Help" onClick={handleToggleInstructions}>
+      <IconButton aria-label="Help" onClick={handleToggleInstructions}>
         <Help className={styles.icon} />
-      </Button>
+      </IconButton>
       <h1 className={styles.title}>Wordle</h1>
-      <Button aria-label="Restart" onClick={handleResetGame}>
+      <IconButton aria-label="Restart" onClick={handleResetGame}>
         <RestartAlt className={styles.icon} />
-      </Button>
+      </IconButton>
       <Instructions
         open={instructionsOpen}
         onClose={handleToggleInstructions}

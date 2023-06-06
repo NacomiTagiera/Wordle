@@ -3,7 +3,7 @@ import { Snackbar } from "@mui/material";
 
 import { useDispatchWordle, useGetMessage } from "@/redux/slices/wordleSlice";
 
-import styles from "@/styles/components/Message.module.scss";
+import styles from "./Message.module.scss";
 
 export default function Message() {
   const { resetMessage } = useDispatchWordle();

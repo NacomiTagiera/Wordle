@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import { LetterState } from "@/types";
 
-import styles from "@/styles/components/Key.module.scss";
+import styles from "./Key.module.scss";
 
 interface Props {
   children: ReactNode;

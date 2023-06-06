@@ -7,20 +7,15 @@ import {
   useGetGameStatus,
   useGetLetterState,
 } from "@/redux/slices/wordleSlice";
+import { keyboardRows } from "@/lib/constants";
 
-import styles from "@/styles/components/Keyboard.module.scss";
+import styles from "./Keyboard.module.scss";
 
 interface Props {
   onBackspaceClick: () => void;
   onEnterClick: () => void;
   onLetterClick: (letter: string) => void;
 }
-
-const keyboardRows = [
-  ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-  ["", "a", "s", "d", "f", "g", "h", "j", "k", "l", ""],
-  ["enter", "z", "x", "c", "v", "b", "n", "m", "backspace"],
-];
 
 export default function Keyboard({
   onBackspaceClick,

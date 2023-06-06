@@ -1,0 +1,7 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--header-height));
+  margin-inline: auto;
+  width: min(100%, var(--game-max-width));
+}

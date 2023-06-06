@@ -1,7 +1,7 @@
 import Row from "./Row";
 import { useGetBoardRows } from "@/redux/slices/wordleSlice";
 
-import styles from "@/styles/components/Gameboard.module.scss";
+import styles from "./Gameboard.module.scss";
 
 export default function Board() {
   const rows = useGetBoardRows();

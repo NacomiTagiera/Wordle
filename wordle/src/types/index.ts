@@ -1,6 +1,6 @@
 export interface GameState {
-  boardRowState: Array<Array<LetterState>>;
-  boardState: Array<string>;
+  boardRowState: LetterState[][];
+  boardState: string[];
   currentRowIndex: number;
   keyboardLetterState: Record<string, LetterState>;
   message: Message;

@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { GameState } from "@/types";
+import { GameState, GameStatus, LetterState } from "@/types";
 import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from "@/lib/constants";
 import {
   appraiseGuess,
@@ -18,10 +18,10 @@ const initialState: GameState = {
   boardRowState: [],
   boardState: new Array(NUMBER_OF_ROWS).fill(""),
   currentRowIndex: 0,
-  keyboardLetterState: {},
+  keyboardLetterState: {} as Record<string, LetterState>,
   message: { message: "", duration: 1500 },
   solution: getRandomWord(),
-  status: "playing",
+  status: "playing" as GameStatus,
 };
 
 export const wordleSlice = createSlice({
@@ -77,16 +77,11 @@ export const wordleSlice = createSlice({
       boardRowState.forEach((letterState, index) => {
         const currentLetterState = state.keyboardLetterState[guess[index]];
 
-        switch (currentLetterState) {
-          case "present":
-            if (letterState === "absent") break;
-
-          case "correct":
-            break;
-
-          default:
-            state.keyboardLetterState[guess[index]] = letterState;
-            break;
+        if (
+          currentLetterState !== "present" &&
+          currentLetterState !== "correct"
+        ) {
+          state.keyboardLetterState[guess[index]] = letterState;
         }
       });
 

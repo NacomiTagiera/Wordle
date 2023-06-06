@@ -6,7 +6,7 @@ import Keyboard from "./Keyboard";
 import Message from "../UI/Message";
 import { useDispatchWordle } from "@/redux/slices/wordleSlice";
 
-import styles from "@/styles/components/Game.module.scss";
+import styles from "./Game.module.scss";
 
 export default function Game() {
   const { addLetter, removeLetter, submitGuess } = useDispatchWordle();

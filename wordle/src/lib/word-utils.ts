@@ -2,6 +2,11 @@ import { LetterState } from "@/types";
 import { NUMBER_OF_LETTERS } from "./constants";
 import { words } from "@/db";
 
+interface Match {
+  letter: string;
+  state: LetterState;
+}
+
 export const getRandomWord = () => {
   const randomIndex = Math.floor(Math.random() * words.length);
 
@@ -25,9 +30,9 @@ export const appraiseGuess = (
   const guessArray = Array.from(guess);
   const solutionArray = Array.from(solution);
 
-  const matches = guessArray.map((letter) => ({
+  const matches: Match[] = guessArray.map((letter) => ({
     letter,
-    state: "absent" as LetterState,
+    state: "absent",
   }));
 
   for (let i = guessArray.length - 1; i >= 0; i--) {

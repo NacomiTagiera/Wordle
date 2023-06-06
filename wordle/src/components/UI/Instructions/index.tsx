@@ -1,10 +1,10 @@
 import React from "react";
 
 import {
-  Button,
   Card,
   Dialog,
   Divider,
+  IconButton,
   Slide,
   Typography,
   useMediaQuery,
@@ -13,10 +13,10 @@ import { Close, RestartAlt } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { TransitionProps } from "@mui/material/transitions";
 
-import Tile from "../Game/Gameboard/Tile";
+import Tile from "../../Game/Gameboard/Tile";
 import { examples } from "@/lib/constants";
 
-import styles from "@/styles/components/Instructions.module.scss";
+import styles from "./Instructions.module.scss";
 
 interface Props {
   open: boolean;
@@ -52,7 +52,7 @@ export default function Instructions({ open, onClose }: Props) {
         sx={{ px: 3, py: 1 }}
       >
         <section>
-          <Button
+          <IconButton
             aria-label="Close"
             onClick={onClose}
             sx={{
@@ -62,7 +62,7 @@ export default function Instructions({ open, onClose }: Props) {
             }}
           >
             <Close sx={{ color: "#000", fontSize: "3rem" }} />
-          </Button>
+          </IconButton>
           <h1>how to play</h1>
           <Typography component="h2" variant="h4">
             Guess the <strong>WORDLE</strong> in 6 tries.
