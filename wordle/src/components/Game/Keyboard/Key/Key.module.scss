@@ -41,4 +41,8 @@
     background-color: var(--color-present);
     color: #fff;
   }
+
+  &--empty {
+    flex: 0.5;
+  }
 }

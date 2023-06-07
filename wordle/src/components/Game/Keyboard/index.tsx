@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import BackspaceIcon from "@mui/icons-material/Backspace";
 
@@ -22,33 +22,33 @@ export default function Keyboard({
   onEnterClick,
   onLetterClick,
 }: Props) {
-  const letterStatus = useGetLetterState();
+  const letterState = useGetLetterState();
   const gameStatus = useGetGameStatus();
 
-  useEffect(() => {
-    const handleKeyUp = (event: KeyboardEvent) => {
+  const handleKeyUp = useCallback(
+    (event: KeyboardEvent) => {
       const key = event.key;
 
       if (key === "Backspace") {
         onBackspaceClick();
-        return;
-      }
-
-      if (key === "Enter") {
+      } else if (key === "Enter") {
         onEnterClick();
-        return;
+      } else if (key.match(/^[a-z]$/i)) {
+        onLetterClick(key.toLowerCase());
       }
+    },
+    [onBackspaceClick, onEnterClick, onLetterClick]
+  );
 
-      if (key.match(/^[a-z]$/i)) {
-        onLetterClick(key.toLocaleLowerCase());
-      }
+  useEffect(() => {
+    if (gameStatus === "playing") {
+      window.addEventListener("keyup", handleKeyUp);
+    }
+
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
     };
-
-    if (gameStatus === "playing") window.addEventListener("keyup", handleKeyUp);
-    else window.removeEventListener("keyup", handleKeyUp);
-
-    return () => window.removeEventListener("keyup", handleKeyUp);
-  }, [onBackspaceClick, onEnterClick, onLetterClick, gameStatus]);
+  }, [gameStatus, handleKeyUp]);
 
   return (
     <div className={styles.keyboard}>
@@ -68,13 +68,15 @@ export default function Keyboard({
                 </Key>
               );
             } else if (letter === "") {
-              return <div key={letterIndex} style={{ flex: "0.5" }}></div>;
+              return (
+                <div key={letterIndex} className={styles["key--empty"]}></div>
+              );
             } else {
               return (
                 <Key
                   key={letterIndex}
-                  letterState={letterStatus[letter]}
-                  onClick={onLetterClick.bind(null, letter)}
+                  letterState={letterState[letter]}
+                  onClick={() => onLetterClick(letter)}
                 >
                   {letter}
                 </Key>
