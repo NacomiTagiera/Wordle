@@ -19,8 +19,7 @@ export default function Key({
 }: Props) {
   return (
     <button
-      className={styles.key}
-      style={{ flex: large ? 1.5 : 1, fontSize: large ? "12px" : "16px" }}
+      className={large ? styles["key--large"] : styles.key}
       data-state={letterState}
       onClick={onClick}
     >

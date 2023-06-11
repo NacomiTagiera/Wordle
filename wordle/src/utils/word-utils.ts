@@ -1,6 +1,6 @@
 import { LetterState } from "@/types";
 import { NUMBER_OF_LETTERS } from "./constants";
-import { words } from "@/db";
+import { words } from "./db";
 
 interface Match {
   letter: string;

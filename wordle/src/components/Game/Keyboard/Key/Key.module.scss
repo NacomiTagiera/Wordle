@@ -1,9 +1,11 @@
 .key {
+  flex: 1;
   background-color: var(--light-gray);
   border-radius: 4px;
   border: 0;
   color: #000;
   cursor: pointer;
+  font-size: 16px;
   font-weight: 600;
   height: 58px;
   margin-right: 6px;
@@ -44,5 +46,11 @@
 
   &--empty {
     flex: 0.5;
+  }
+
+  &--large {
+    @extend .key;
+    flex: 1.5;
+    font-size: 12px;
   }
 }

@@ -14,7 +14,7 @@ import { useTheme } from "@mui/material/styles";
 import { TransitionProps } from "@mui/material/transitions";
 
 import Tile from "../../Game/Gameboard/Tile";
-import { examples } from "@/lib/constants";
+import { examples } from "@/utils/constants";
 
 import styles from "./Instructions.module.scss";
 

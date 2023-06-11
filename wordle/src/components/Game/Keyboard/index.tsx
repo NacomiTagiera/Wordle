@@ -7,9 +7,10 @@ import {
   useGetGameStatus,
   useGetLetterState,
 } from "@/redux/slices/wordleSlice";
-import { keyboardRows } from "@/lib/constants";
+import { keyboardRows } from "@/utils/constants";
 
 import styles from "./Keyboard.module.scss";
+import keyStyles from "./Key/Key.module.scss";
 
 interface Props {
   onBackspaceClick: () => void;
@@ -69,7 +70,7 @@ export default function Keyboard({
               );
             } else if (letter === "") {
               return (
-                <div key={letterIndex} className={styles["key--empty"]}></div>
+                <div key={letterIndex} className={keyStyles["key--empty"]} />
               );
             } else {
               return (
