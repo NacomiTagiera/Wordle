@@ -1,0 +1,56 @@
+.key {
+  flex: 1;
+  background-color: var(--light-gray);
+  border-radius: 4px;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  height: 58px;
+  margin-right: 6px;
+  padding: 0;
+  text-transform: uppercase;
+  user-select: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--outline);
+  }
+
+  &:hover {
+    background-color: var(--light-gray);
+  }
+
+  &[data-state='absent'] {
+    background-color: var(--color-absent);
+    color: #fff;
+  }
+
+  &[data-state='correct'] {
+    background-color: var(--color-correct);
+    color: #fff;
+  }
+
+  &[data-state='present'] {
+    background-color: var(--color-present);
+    color: #fff;
+  }
+
+  &--empty {
+    flex: 0.5;
+  }
+
+  &--large {
+    @extend .key;
+    flex: 1.5;
+    font-size: 12px;
+  }
+}
