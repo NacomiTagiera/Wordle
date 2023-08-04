@@ -29,7 +29,7 @@ export default function Tile({ letter, letterState, small = false }: Props) {
 
   return (
     <div
-      className={small ? styles['tile--small'] : styles.tile}
+      className={`${styles.tile} ${small ? styles['tile--small'] : ''}`}
       role='img'
       aria-roledescription='tile'
       aria-label={ariaLabel}

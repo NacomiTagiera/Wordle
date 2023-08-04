@@ -14,13 +14,10 @@ export const getRandomWord = () => {
   return words[randomIndex];
 };
 
-export const isValidWord = (word: string) => {
-  return words.includes(word);
-};
+export const isValidWord = (word: string) => words.includes(word);
 
-export const isGuessComplete = (guess: string) => {
-  return guess.length === NUMBER_OF_LETTERS;
-};
+export const isGuessComplete = (guess: string) =>
+  guess.length === NUMBER_OF_LETTERS;
 
 export const appraiseGuess = (
   guess: string,

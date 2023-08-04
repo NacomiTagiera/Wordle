@@ -17,7 +17,7 @@ export default function Key({
 }: Props) {
   return (
     <button
-      className={large ? styles['key--large'] : styles.key}
+      className={`${styles.key} ${large ? styles['key--large'] : ''}`}
       data-state={letterState}
       onClick={onClick}
     >
