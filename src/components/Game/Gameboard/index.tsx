@@ -1,11 +1,12 @@
-import { useGetBoardRows } from '@/redux/slices/wordleSlice';
+import { useAppSelector } from '@/redux/hooks';
+import { selectBoardRows } from '@/redux/slices/wordleSlice';
 
 import Row from './Row';
 
 import styles from './Gameboard.module.scss';
 
 export default function Board() {
-  const rows = useGetBoardRows();
+  const rows = useAppSelector(selectBoardRows);
 
   return (
     <div className={styles.board__container}>

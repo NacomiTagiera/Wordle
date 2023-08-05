@@ -1,11 +1,12 @@
+import { GameState } from '@/types';
+
 import wordle, {
   addLetter,
   removeLetter,
   resetGame,
   resetMessage,
   submitGuess,
-} from '@/redux/slices/wordleSlice';
-import { GameState } from '@/types';
+} from './wordleSlice';
 
 const initialState: GameState = {
   boardRowState: [],

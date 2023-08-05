@@ -4,9 +4,10 @@
 import React, { useCallback, useEffect } from 'react';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 
+import { useAppSelector } from '@/redux/hooks';
 import {
-  useGetGameStatus,
-  useGetLetterState,
+  selectGameStatus,
+  selectLetterState,
 } from '@/redux/slices/wordleSlice';
 import { keyboardRows } from '@/utils/constants';
 
@@ -26,8 +27,8 @@ export default function Keyboard({
   onEnterClick,
   onLetterClick,
 }: Props) {
-  const letterState = useGetLetterState();
-  const gameStatus = useGetGameStatus();
+  const letterState = useAppSelector(selectLetterState);
+  const gameStatus = useAppSelector(selectGameStatus);
 
   const handleKeyUp = useCallback(
     (event: KeyboardEvent) => {
@@ -37,7 +38,7 @@ export default function Keyboard({
         onBackspaceClick();
       } else if (key === 'Enter') {
         onEnterClick();
-      } else if (key.match(/^[a-z]$/i)) {
+      } else if (key.match(/^[a-z]$/)) {
         onLetterClick(key.toLowerCase());
       }
     },

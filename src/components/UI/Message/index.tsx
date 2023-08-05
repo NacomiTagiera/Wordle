@@ -3,13 +3,14 @@
 import { useEffect } from 'react';
 import { Snackbar } from '@mui/material';
 
-import { useDispatchWordle, useGetMessage } from '@/redux/slices/wordleSlice';
+import { useAppSelector } from '@/redux/hooks';
+import { selectMessage, useDispatchWordle } from '@/redux/slices/wordleSlice';
 
 import styles from './Message.module.scss';
 
 export default function Message() {
   const { resetMessage } = useDispatchWordle();
-  const { message, duration } = useGetMessage();
+  const { message, duration } = useAppSelector(selectMessage);
 
   const handleCloseSnackbar = () => {
     resetMessage();

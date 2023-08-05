@@ -1,5 +1,6 @@
 import {
   bindActionCreators,
+  createSelector,
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
@@ -13,7 +14,7 @@ import {
   isValidWord,
 } from '@/utils/word-utils';
 
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch } from '../hooks';
 
 const initialState: GameState = {
   boardRowState: [],
@@ -110,19 +111,20 @@ export const useDispatchWordle = () => {
   return bindActionCreators(actions, dispatch);
 };
 
-export const useGetBoardRows = () =>
-  useAppSelector((state: GameState) =>
-    state.boardState.map((letters, rowIndex) => ({
-      letters,
-      lettersState: state.boardRowState[rowIndex],
-    }))
-  );
+const selectGameState = (state: GameState) => state;
 
-export const useGetGameStatus = () => useAppSelector((state) => state.status);
+export const selectBoardRows = createSelector(selectGameState, (state) =>
+  state.boardState.map((letters, rowIndex) => ({
+    letters,
+    lettersState: state.boardRowState[rowIndex],
+  }))
+);
 
-export const useGetLetterState = () =>
-  useAppSelector((state) => state.keyboardLetterState);
+export const selectGameStatus = (state: GameState) => state.status;
 
-export const useGetMessage = () => useAppSelector((state) => state.message);
+export const selectLetterState = (state: GameState) =>
+  state.keyboardLetterState;
+
+export const selectMessage = (state: GameState) => state.message;
 
 export default wordleSlice.reducer;
