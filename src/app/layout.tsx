@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
@@ -15,10 +13,14 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Wordle Clone',
   description:
-    'This is a clone of the popular word game - Wordle - built with Next.js, TypeScript, Redux Toolkit, Material UI, and Sass.',
+    'A clone of the well-known word game called Wordle. This version has been developed using Next.js, Redux Toolkit, Material UI, and Sass.',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang='en'>
       <body className={roboto.className}>{children}</body>

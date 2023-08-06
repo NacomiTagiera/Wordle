@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Close, RestartAlt } from '@mui/icons-material';
 import {

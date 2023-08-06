@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 'use client';
 
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 
 import { useAppSelector } from '@/redux/hooks';
@@ -68,7 +68,12 @@ export default function Keyboard({
               );
             } else if (letter === 'backspace') {
               return (
-                <Key key={letterIndex} onClick={onBackspaceClick} large>
+                <Key
+                  key={letterIndex}
+                  dataKey='←'
+                  onClick={onBackspaceClick}
+                  large
+                >
                   <BackspaceIcon sx={{ fontSize: '2rem' }} />
                 </Key>
               );
