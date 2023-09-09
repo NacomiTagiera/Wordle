@@ -2,23 +2,18 @@ import {
   bindActionCreators,
   createSelector,
   createSlice,
-  PayloadAction,
+  type PayloadAction,
 } from '@reduxjs/toolkit';
 
-import { GameState, GameStatus, LetterState } from '@/types';
+import { type GameState, type GameStatus, type LetterState } from '@/types';
 import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from '@/utils/constants';
-import {
-  appraiseGuess,
-  getRandomWord,
-  isGuessComplete,
-  isValidWord,
-} from '@/utils/word-utils';
+import { appraiseGuess, getRandomWord, isGuessComplete, isValidWord } from '@/utils/word-utils';
 
 import { useAppDispatch } from '../hooks';
 
 const initialState: GameState = {
   boardRowState: [],
-  boardState: new Array(NUMBER_OF_ROWS).fill(''),
+  boardState: new Array(NUMBER_OF_ROWS).fill('') as string[],
   currentRowIndex: 0,
   keyboardLetterState: {} as Record<string, LetterState>,
   message: { message: '', duration: 1500 },
@@ -32,8 +27,7 @@ export const wordleSlice = createSlice({
   reducers: {
     addLetter: (state, action: PayloadAction<string>) => {
       if (state.status !== 'playing') return;
-      if (state.boardState[state.currentRowIndex].length === NUMBER_OF_LETTERS)
-        return;
+      if (state.boardState[state.currentRowIndex].length === NUMBER_OF_LETTERS) return;
 
       state.boardState[state.currentRowIndex] += action.payload;
     },
@@ -41,13 +35,14 @@ export const wordleSlice = createSlice({
       if (state.status !== 'playing') return;
       if (!state.boardState[state.currentRowIndex].length) return;
 
-      state.boardState[state.currentRowIndex] = state.boardState[
-        state.currentRowIndex
-      ].slice(0, -1);
+      state.boardState[state.currentRowIndex] = state.boardState[state.currentRowIndex].slice(
+        0,
+        -1
+      );
     },
     resetGame: (state) => {
       state.boardRowState = [];
-      state.boardState = new Array(NUMBER_OF_ROWS).fill('');
+      state.boardState = new Array(NUMBER_OF_ROWS).fill('') as string[];
       state.currentRowIndex = 0;
       state.keyboardLetterState = {};
       state.message = { message: '', duration: 1500 };
@@ -79,10 +74,7 @@ export const wordleSlice = createSlice({
       boardRowState.forEach((letterState, index) => {
         const currentLetterState = state.keyboardLetterState[guess[index]];
 
-        if (
-          currentLetterState !== 'present' &&
-          currentLetterState !== 'correct'
-        ) {
+        if (currentLetterState !== 'present' && currentLetterState !== 'correct') {
           state.keyboardLetterState[guess[index]] = letterState;
         }
       });
@@ -122,9 +114,8 @@ export const selectBoardRows = createSelector(selectGameState, (state) =>
 
 export const selectGameStatus = (state: GameState) => state.status;
 
-export const selectLetterState = (state: GameState) =>
-  state.keyboardLetterState;
+export const selectLetterState = (state: GameState) => state.keyboardLetterState;
 
 export const selectMessage = (state: GameState) => state.message;
 
-export default wordleSlice.reducer;
+export const { reducer } = wordleSlice;

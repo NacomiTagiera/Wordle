@@ -1,28 +1,24 @@
 'use client';
 
-import { LetterState } from '@/types';
+import { type LetterState } from '@/types';
 
 import styles from './Key.module.scss';
 
-interface Props {
+type Props = {
   children: React.ReactNode;
+  ariaLabel?: string;
   dataKey?: string;
   large?: boolean;
   letterState?: LetterState;
   onClick: () => void;
-}
+};
 
-export default function Key({
-  children,
-  dataKey,
-  large = false,
-  letterState,
-  onClick,
-}: Props) {
+export default function Key({ children, ariaLabel, dataKey, large, letterState, onClick }: Props) {
   return (
     <button
       className={`${styles.key} ${large ? styles['key--large'] : ''}`}
       type='button'
+      aria-label={ariaLabel}
       data-state={letterState}
       data-key={typeof children === 'string' ? children : dataKey}
       onClick={onClick}

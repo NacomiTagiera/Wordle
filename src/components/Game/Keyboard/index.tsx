@@ -1,14 +1,10 @@
-/* eslint-disable no-unused-vars */
 'use client';
 
 import { useCallback, useEffect } from 'react';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 
 import { useAppSelector } from '@/redux/hooks';
-import {
-  selectGameStatus,
-  selectLetterState,
-} from '@/redux/slices/wordleSlice';
+import { selectGameStatus, selectLetterState } from '@/redux/slices/wordleSlice';
 import { keyboardRows } from '@/utils/constants';
 
 import Key from './Key';
@@ -16,17 +12,13 @@ import Key from './Key';
 import keyStyles from './Key/Key.module.scss';
 import styles from './Keyboard.module.scss';
 
-interface Props {
+type Props = {
   onBackspaceClick: () => void;
   onEnterClick: () => void;
   onLetterClick: (letter: string) => void;
-}
+};
 
-export default function Keyboard({
-  onBackspaceClick,
-  onEnterClick,
-  onLetterClick,
-}: Props) {
+export default function Keyboard({ onBackspaceClick, onEnterClick, onLetterClick }: Props) {
   const letterState = useAppSelector(selectLetterState);
   const gameStatus = useAppSelector(selectGameStatus);
 
@@ -62,7 +54,7 @@ export default function Keyboard({
           {Array.from(row).map((letter, letterIndex) => {
             if (letter === 'enter') {
               return (
-                <Key key={letterIndex} onClick={onEnterClick} large>
+                <Key key={letterIndex} data-key='↵' onClick={onEnterClick} large>
                   enter
                 </Key>
               );
@@ -70,17 +62,16 @@ export default function Keyboard({
               return (
                 <Key
                   key={letterIndex}
+                  ariaLabel='backaspace'
                   dataKey='←'
                   onClick={onBackspaceClick}
                   large
                 >
-                  <BackspaceIcon sx={{ fontSize: '2rem' }} />
+                  <BackspaceIcon aria-hidden={true} sx={{ fontSize: '2rem' }} />
                 </Key>
               );
             } else if (letter === '') {
-              return (
-                <div key={letterIndex} className={keyStyles['key--empty']} />
-              );
+              return <div key={letterIndex} className={keyStyles['key--empty']} />;
             } else {
               return (
                 <Key

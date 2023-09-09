@@ -1,14 +1,14 @@
-import { LetterState } from '@/types';
+import { type LetterState } from '@/types';
 
 import styles from './Tile.module.scss';
 
-interface Props {
+type Props = {
   letter: string;
   letterState?: LetterState;
   small?: boolean;
-}
+};
 
-export default function Tile({ letter, letterState, small = false }: Props) {
+export default function Tile({ letter, letterState, small }: Props) {
   let ariaLabel = small ? letter : 'empty';
   let dataState = letter && !letterState ? 'tbd' : 'empty';
 

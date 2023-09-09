@@ -13,7 +13,7 @@ import styles from './Header.module.scss';
 export default function Header() {
   const { resetGame } = useDispatchWordle();
 
-  const [instructionsOpen, setInstructionsOpen] = useState<boolean>(false);
+  const [instructionsOpen, setInstructionsOpen] = useState(false);
 
   const handleResetGame = () => {
     resetGame();
@@ -32,10 +32,7 @@ export default function Header() {
       <IconButton aria-label='Restart' onClick={handleResetGame}>
         <RestartAlt className={styles.icon} />
       </IconButton>
-      <Instructions
-        open={instructionsOpen}
-        onClose={handleToggleInstructions}
-      />
+      <Instructions open={instructionsOpen} onClose={handleToggleInstructions} />
     </header>
   );
 }

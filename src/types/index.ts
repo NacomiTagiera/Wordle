@@ -2,12 +2,12 @@ export type GameStatus = 'fail' | 'playing' | 'win';
 
 export type LetterState = 'absent' | 'correct' | 'present';
 
-export interface Message {
+export type Message = {
   message: string;
   duration: number;
-}
+};
 
-export interface GameState {
+export type GameState = {
   boardRowState: LetterState[][];
   boardState: string[];
   currentRowIndex: number;
@@ -15,4 +15,4 @@ export interface GameState {
   message: Message;
   solution: string;
   status: GameStatus;
-}
+};

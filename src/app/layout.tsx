@@ -13,14 +13,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Wordle Clone',
   description:
-    'A clone of the well-known word game called Wordle. This version has been developed using Next.js, Redux Toolkit, Material UI, and Sass.',
+    'Clone of the well-known word game called Wordle. This version has been developed using Next.js, Redux Toolkit, Material UI, and Sass.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <body className={roboto.className}>{children}</body>

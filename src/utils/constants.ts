@@ -1,4 +1,4 @@
-import { LetterState } from '@/types';
+import { type LetterState } from '@/types';
 
 export const NUMBER_OF_ROWS = 6;
 export const NUMBER_OF_LETTERS = 5;

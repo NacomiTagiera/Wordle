@@ -1,4 +1,4 @@
-const words = [
+export const words = [
   'aargh',
   'abaca',
   'abaci',
@@ -5757,5 +5757,3 @@ const words = [
   'zooms',
   'zowie',
 ];
-
-export default words;

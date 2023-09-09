@@ -1,12 +1,12 @@
-import { LetterState } from '@/types';
+import { type LetterState } from '@/types';
 
 import { NUMBER_OF_LETTERS } from './constants';
-import words from './db';
+import { words } from './db';
 
-interface Match {
+type Match = {
   letter: string;
   state: LetterState;
-}
+};
 
 export const getRandomWord = () => {
   const randomIndex = Math.floor(Math.random() * words.length);
@@ -16,13 +16,9 @@ export const getRandomWord = () => {
 
 export const isValidWord = (word: string) => words.includes(word);
 
-export const isGuessComplete = (guess: string) =>
-  guess.length === NUMBER_OF_LETTERS;
+export const isGuessComplete = (guess: string) => guess.length === NUMBER_OF_LETTERS;
 
-export const appraiseGuess = (
-  guess: string,
-  solution: string
-): LetterState[] => {
+export const appraiseGuess = (guess: string, solution: string): LetterState[] => {
   const result: LetterState[] = [];
 
   const guessArray = Array.from(guess);

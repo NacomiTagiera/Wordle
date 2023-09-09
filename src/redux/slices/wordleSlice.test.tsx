@@ -1,7 +1,8 @@
-import { GameState } from '@/types';
+import { type GameState } from '@/types';
 
-import wordle, {
+import {
   addLetter,
+  reducer as wordle,
   removeLetter,
   resetGame,
   resetMessage,
@@ -10,7 +11,7 @@ import wordle, {
 
 const initialState: GameState = {
   boardRowState: [],
-  boardState: new Array(2).fill(''),
+  boardState: new Array(2).fill('') as string[],
   currentRowIndex: 0,
   keyboardLetterState: {},
   message: { message: '', duration: 1500 },
