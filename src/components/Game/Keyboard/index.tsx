@@ -7,7 +7,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { selectGameStatus, selectLetterState } from '@/redux/slices/wordleSlice';
 import { keyboardRows } from '@/utils/constants';
 
-import Key from './Key';
+import { Key } from './Key';
 
 import keyStyles from './Key/Key.module.scss';
 import styles from './Keyboard.module.scss';
@@ -18,7 +18,7 @@ type Props = {
   onLetterClick: (letter: string) => void;
 };
 
-export default function Keyboard({ onBackspaceClick, onEnterClick, onLetterClick }: Props) {
+export const Keyboard = ({ onBackspaceClick, onEnterClick, onLetterClick }: Props) => {
   const letterState = useAppSelector(selectLetterState);
   const gameStatus = useAppSelector(selectGameStatus);
 
@@ -67,7 +67,7 @@ export default function Keyboard({ onBackspaceClick, onEnterClick, onLetterClick
                   onClick={onBackspaceClick}
                   large
                 >
-                  <BackspaceIcon aria-hidden={true} sx={{ fontSize: '2rem' }} />
+                  <BackspaceIcon aria-hidden sx={{ fontSize: '2rem' }} />
                 </Key>
               );
             } else if (letter === '') {
@@ -88,4 +88,4 @@ export default function Keyboard({ onBackspaceClick, onEnterClick, onLetterClick
       ))}
     </div>
   );
-}
+};

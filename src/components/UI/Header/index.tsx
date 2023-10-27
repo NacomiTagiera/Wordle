@@ -6,22 +6,15 @@ import { IconButton } from '@mui/material';
 
 import { useDispatchWordle } from '@/redux/slices/wordleSlice';
 
-import Instructions from '../Instructions';
+import { Instructions } from '../Instructions';
 
 import styles from './Header.module.scss';
 
-export default function Header() {
+export const Header = () => {
   const { resetGame } = useDispatchWordle();
-
   const [instructionsOpen, setInstructionsOpen] = useState(false);
 
-  const handleResetGame = () => {
-    resetGame();
-  };
-
-  const handleToggleInstructions = () => {
-    setInstructionsOpen((prevState) => !prevState);
-  };
+  const handleToggleInstructions = () => setInstructionsOpen((prevState) => !prevState);
 
   return (
     <header className={styles.header}>
@@ -29,10 +22,10 @@ export default function Header() {
         <Help className={styles.icon} />
       </IconButton>
       <h1 className={styles.title}>Wordle</h1>
-      <IconButton aria-label='Restart' onClick={handleResetGame}>
+      <IconButton aria-label='Restart' onClick={() => resetGame()}>
         <RestartAlt className={styles.icon} />
       </IconButton>
       <Instructions open={instructionsOpen} onClose={handleToggleInstructions} />
     </header>
   );
-}
+};

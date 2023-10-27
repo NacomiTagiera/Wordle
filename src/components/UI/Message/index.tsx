@@ -8,13 +8,9 @@ import { selectMessage, useDispatchWordle } from '@/redux/slices/wordleSlice';
 
 import styles from './Message.module.scss';
 
-export default function Message() {
+export const Message = () => {
   const { resetMessage } = useDispatchWordle();
   const { message, duration } = useAppSelector(selectMessage);
-
-  const handleCloseSnackbar = () => {
-    resetMessage();
-  };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -35,7 +31,7 @@ export default function Message() {
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       sx={{ mt: { xs: 7, md: 5 } }}
       open={!!message}
-      onClose={handleCloseSnackbar}
+      onClose={() => resetMessage()}
     >
       <p
         className={styles.message}
@@ -47,4 +43,4 @@ export default function Message() {
       </p>
     </Snackbar>
   );
-}
+};

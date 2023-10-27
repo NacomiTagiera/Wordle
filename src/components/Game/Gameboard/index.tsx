@@ -1,11 +1,13 @@
+'use client';
+
 import { useAppSelector } from '@/redux/hooks';
 import { selectBoardRows } from '@/redux/slices/wordleSlice';
 
-import Row from './Row';
+import { Row } from './Row';
 
 import styles from './Gameboard.module.scss';
 
-export default function Board() {
+export const Board = () => {
   const rows = useAppSelector(selectBoardRows);
 
   return (
@@ -22,4 +24,4 @@ export default function Board() {
       </div>
     </div>
   );
-}
+};

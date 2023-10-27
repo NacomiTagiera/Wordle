@@ -13,7 +13,7 @@ type Props = {
   onClick: () => void;
 };
 
-export default function Key({ children, ariaLabel, dataKey, large, letterState, onClick }: Props) {
+export const Key = ({ children, ariaLabel, dataKey, large, letterState, onClick }: Props) => {
   return (
     <button
       className={`${styles.key} ${large ? styles['key--large'] : ''}`}
@@ -26,4 +26,4 @@ export default function Key({ children, ariaLabel, dataKey, large, letterState, 
       {children}
     </button>
   );
-}
+};

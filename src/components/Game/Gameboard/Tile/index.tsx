@@ -8,7 +8,7 @@ type Props = {
   small?: boolean;
 };
 
-export default function Tile({ letter, letterState, small }: Props) {
+export const Tile = ({ letter, letterState, small }: Props) => {
   let ariaLabel = small ? letter : 'empty';
   let dataState = letter && !letterState ? 'tbd' : 'empty';
 
@@ -38,4 +38,4 @@ export default function Tile({ letter, letterState, small }: Props) {
       {letter}
     </div>
   );
-}
+};

@@ -8,7 +8,7 @@ import { type TransitionProps } from '@mui/material/transitions';
 
 import { examples } from '@/utils/constants';
 
-import Tile from '../../Game/Gameboard/Tile';
+import { Tile } from '../../Game/Gameboard/Tile';
 
 import styles from './Instructions.module.scss';
 
@@ -27,7 +27,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction='down' ref={ref} {...props} />;
 });
 
-export default function Instructions({ open, onClose }: Props) {
+export const Instructions = ({ open, onClose }: Props) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -96,4 +96,4 @@ export default function Instructions({ open, onClose }: Props) {
       </Card>
     </Dialog>
   );
-}
+};

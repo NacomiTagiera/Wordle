@@ -1,11 +1,13 @@
+'use client';
+
 import { useDispatchWordle } from '@/redux/slices/wordleSlice';
 
-import Board from './Gameboard';
-import Keyboard from './Keyboard';
+import { Board } from './Gameboard';
+import { Keyboard } from './Keyboard';
 
 import styles from './Game.module.scss';
 
-export default function Game() {
+export const Game = () => {
   const { addLetter, removeLetter, submitGuess } = useDispatchWordle();
 
   return (
@@ -18,4 +20,4 @@ export default function Game() {
       />
     </main>
   );
-}
+};
