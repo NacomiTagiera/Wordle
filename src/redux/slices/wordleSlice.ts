@@ -10,8 +10,9 @@ import { NUMBER_OF_LETTERS, NUMBER_OF_ROWS } from '@/utils/constants';
 import { appraiseGuess, getRandomWord, isGuessComplete, isValidWord } from '@/utils/word-utils';
 
 import { useAppDispatch } from '../hooks';
+import { type RootState } from '../store';
 
-const initialState: GameState = {
+export const initialState: GameState = {
   boardRowState: [],
   boardState: new Array(NUMBER_OF_ROWS).fill('') as string[],
   currentRowIndex: 0,
@@ -103,7 +104,7 @@ export const useDispatchWordle = () => {
   return bindActionCreators(actions, dispatch);
 };
 
-const selectGameState = (state: GameState) => state;
+const selectGameState = (state: RootState) => state.wordle;
 
 export const selectBoardRows = createSelector(selectGameState, (state) =>
   state.boardState.map((letters, rowIndex) => ({
@@ -112,10 +113,8 @@ export const selectBoardRows = createSelector(selectGameState, (state) =>
   }))
 );
 
-export const selectGameStatus = (state: GameState) => state.status;
-
-export const selectLetterState = (state: GameState) => state.keyboardLetterState;
-
-export const selectMessage = (state: GameState) => state.message;
+export const selectGameStatus = (state: RootState) => state.wordle.status;
+export const selectLetterState = (state: RootState) => state.wordle.keyboardLetterState;
+export const selectMessage = (state: RootState) => state.wordle.message;
 
 export const { reducer } = wordleSlice;

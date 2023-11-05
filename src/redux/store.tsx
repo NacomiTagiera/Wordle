@@ -1,10 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, type PreloadedState } from '@reduxjs/toolkit';
 
-import { reducer as wordle } from './slices/wordleSlice';
+import { reducer as wordleReducer } from './slices/wordleSlice';
 
-export const store = configureStore({
-  reducer: wordle,
+const rootReducer = combineReducers({
+  wordle: wordleReducer,
 });
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];
