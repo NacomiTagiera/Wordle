@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, type PreloadedState } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { reducer as wordleReducer } from './slices/wordleSlice';
 
@@ -6,7 +6,7 @@ const rootReducer = combineReducers({
   wordle: wordleReducer,
 });
 
-export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+export const setupStore = (preloadedState?: Partial<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
