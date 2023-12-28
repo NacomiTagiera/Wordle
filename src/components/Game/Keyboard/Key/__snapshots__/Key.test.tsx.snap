@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Key renders with default props 1`] = `
+<DocumentFragment>
+  <button
+    class="key "
+    data-key="A"
+    data-testid="key"
+    type="button"
+  >
+    A
+  </button>
+</DocumentFragment>
+`;
