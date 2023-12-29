@@ -20,7 +20,7 @@ const initialState: GameState = {
 };
 
 describe('wordleSlice', () => {
-  it('should reset the game state correctly', () => {
+  it('resets the game', () => {
     const prevState: GameState = {
       boardRowState: [
         ['present', 'absent', 'correct', 'correct', 'correct'],
@@ -52,7 +52,16 @@ describe('wordleSlice', () => {
     expect(currState.status).toBe('playing');
   });
 
-  it('should add a letter to the current row correctly', () => {
+  it('resets the message', () => {
+    const prevState: GameState = {
+      ...initialState,
+      message: { message: 'message', duration: 2000 },
+    };
+    expect(wordle(prevState, resetMessage()).message.message).toBe('');
+    expect(wordle(prevState, resetMessage()).message.duration).toBe(1500);
+  });
+
+  it('adds a letter to the current row', () => {
     const prevState = wordle(initialState, addLetter('a'));
     expect(prevState.boardState[0]).toBe('a');
 
@@ -60,7 +69,7 @@ describe('wordleSlice', () => {
     expect(currState.boardState[0]).toBe('ab');
   });
 
-  it('should not add a letter when the current row is already full', () => {
+  it('does not add a letter when the current row is already full', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['aisle'],
@@ -69,7 +78,7 @@ describe('wordleSlice', () => {
     expect(wordle(prevState, addLetter('a')).boardState[0]).toHaveLength(5);
   });
 
-  it('should not add a letter when the game status is not equal to playing', () => {
+  it('does not add a letter to the current guess when the game status is not equal to playing', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['space'],
@@ -78,7 +87,7 @@ describe('wordleSlice', () => {
     expect(wordle(prevState, addLetter('s')).boardState[0]).toBe('space');
   });
 
-  it('should remove the last letter from the current row correctly', () => {
+  it('removes the last letter from the current row', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['knife', 'spice'],
@@ -87,14 +96,14 @@ describe('wordleSlice', () => {
     expect(wordle(prevState, removeLetter()).boardState[1]).toBe('spic');
   });
 
-  it('should not remove a letter when the current row is empty', () => {
+  it('does not remove a letter when the current row is empty', () => {
     const currState = wordle(initialState, removeLetter());
 
     expect(currState.boardState[0]).toBe('');
     expect(currState.currentRowIndex).toBe(0);
   });
 
-  it('should not remove a letter when the game status is not equal to playing', () => {
+  it('does not remove a letter when the game status is not equal to playing', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['salty'],
@@ -103,7 +112,7 @@ describe('wordleSlice', () => {
     expect(wordle(prevState, removeLetter()).boardState[0]).toBe('salty');
   });
 
-  it('should handle submitting correct guess', () => {
+  it('handles submitting correct guess', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['space'],
@@ -127,7 +136,7 @@ describe('wordleSlice', () => {
     });
   });
 
-  it('should handle submitting incorrect guess', () => {
+  it('handles submitting incorrect guess', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['place'],
@@ -147,7 +156,7 @@ describe('wordleSlice', () => {
     });
   });
 
-  it('should not submit invalid word', () => {
+  it('does not submit invalid word', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['aaaaa'],
@@ -160,7 +169,7 @@ describe('wordleSlice', () => {
     expect(currState.message.message).toBe('Not in word list');
   });
 
-  it('should not submit incomplete guess', () => {
+  it('does not submit incomplete guess', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['spac'],
@@ -173,7 +182,7 @@ describe('wordleSlice', () => {
     expect(currState.message.message).toBe('Not enough letters');
   });
 
-  it('should end the game correctly', () => {
+  it('ends the game after too many incorrect guesses', () => {
     const prevState: GameState = {
       ...initialState,
       boardState: ['sport', 'speed'],
@@ -184,14 +193,5 @@ describe('wordleSlice', () => {
     expect(currState.currentRowIndex).toBe(2);
     expect(currState.message).toEqual({ message: 'space', duration: 0 });
     expect(currState.status).toBe('fail');
-  });
-
-  it('should reset the message correctly', () => {
-    const prevState: GameState = {
-      ...initialState,
-      message: { message: 'message', duration: 2000 },
-    };
-    expect(wordle(prevState, resetMessage()).message.message).toBe('');
-    expect(wordle(prevState, resetMessage()).message.duration).toBe(1500);
   });
 });
