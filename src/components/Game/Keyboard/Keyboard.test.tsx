@@ -59,9 +59,9 @@ describe('Keyboard', () => {
       />
     );
 
-    fireEvent.keyUp(window, { key: 'Backspace' });
-    fireEvent.keyUp(window, { key: 'Enter' });
-    fireEvent.keyUp(window, { key: 'a' });
+    fireEvent.click(screen.getByLabelText(/backspace/i));
+    fireEvent.click(screen.getByText(/enter/));
+    fireEvent.click(screen.getByText(/a/));
 
     expect(onBackspaceClick).toHaveBeenCalledTimes(1);
     expect(onEnterClick).toHaveBeenCalledTimes(1);
