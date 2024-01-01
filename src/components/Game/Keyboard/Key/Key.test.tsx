@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import { Key } from '.';
 
@@ -36,11 +37,12 @@ describe('Key', () => {
     expect(screen.getByTestId('key')).toHaveClass('key--large');
   });
 
-  it('invokes onClick function when clicked', () => {
+  it('invokes onClick function when clicked', async () => {
     const onClick = jest.fn();
+    const user = userEvent.setup();
     render(<Key onClick={onClick}>A</Key>);
 
-    fireEvent.click(screen.getByTestId('key'));
+    await user.click(screen.getByTestId('key'));
     expect(onClick).toHaveBeenCalled();
   });
 });

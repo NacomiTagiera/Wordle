@@ -1,4 +1,5 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import { initialState } from '@/redux/slices/wordleSlice';
 import { type LetterState } from '@/types';
@@ -46,10 +47,11 @@ describe('Keyboard', () => {
     });
   });
 
-  it('invokes all onClick handlers', () => {
+  it('invokes all onClick handlers', async () => {
     const onBackspaceClick = jest.fn();
     const onEnterClick = jest.fn();
     const onLetterClick = jest.fn();
+    const user = userEvent.setup();
 
     renderWithProviders(
       <Keyboard
@@ -59,19 +61,20 @@ describe('Keyboard', () => {
       />
     );
 
-    fireEvent.click(screen.getByLabelText(/backspace/i));
-    fireEvent.click(screen.getByText(/enter/));
-    fireEvent.click(screen.getByText(/a/));
+    await user.click(screen.getByLabelText(/backspace/i));
+    await user.click(screen.getByText('enter'));
+    await user.click(screen.getByText('a'));
 
     expect(onBackspaceClick).toHaveBeenCalledTimes(1);
     expect(onEnterClick).toHaveBeenCalledTimes(1);
     expect(onLetterClick).toHaveBeenCalledWith('a');
   });
 
-  it('does not invoke any onClick handlers when game status is not "playing"', () => {
+  it('does not invoke any onClick handlers when game status is not "playing"', async () => {
     const onBackspaceClick = jest.fn();
     const onEnterClick = jest.fn();
     const onLetterClick = jest.fn();
+    const user = userEvent.setup();
 
     renderWithProviders(
       <Keyboard
@@ -82,9 +85,9 @@ describe('Keyboard', () => {
       { preloadedState: { wordle: { ...initialState, status: 'win' } } }
     );
 
-    fireEvent.keyUp(window, { key: 'Backspace' });
-    fireEvent.keyUp(window, { key: 'Enter' });
-    fireEvent.keyUp(window, { key: 'a' });
+    await user.keyboard('{Backspace}');
+    await user.keyboard('{Enter}');
+    await user.keyboard('a');
 
     expect(onBackspaceClick).not.toHaveBeenCalled();
     expect(onEnterClick).not.toHaveBeenCalled();

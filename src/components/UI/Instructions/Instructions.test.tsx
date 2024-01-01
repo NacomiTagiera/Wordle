@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import { Instructions } from '.';
 
@@ -11,12 +12,13 @@ describe('Instructions', () => {
     expect(screen.getByText(/examples/i)).toBeVisible();
   });
 
-  it('calls the onClose function when close button is clicked', () => {
+  it('calls the onClose function when close button is clicked', async () => {
     const onClose = jest.fn();
+    const user = userEvent.setup();
 
     render(<Instructions open onClose={onClose} />);
 
-    fireEvent.click(screen.getByLabelText('Close'));
+    await user.click(screen.getByLabelText('Close'));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

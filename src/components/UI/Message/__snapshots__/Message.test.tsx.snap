@@ -4,7 +4,7 @@ exports[`Message matches the snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiSnackbar-root MuiSnackbar-anchorOriginTopCenter css-1q8jzsy-MuiSnackbar-root"
-    data-testid="message-container"
+    data-testid="message"
     role="presentation"
   >
     <p

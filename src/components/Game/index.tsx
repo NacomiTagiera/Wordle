@@ -2,7 +2,7 @@
 
 import { useDispatchWordle } from '@/redux/slices/wordleSlice';
 
-import { Board } from './Gameboard';
+import { Gameboard } from './Gameboard';
 import { Keyboard } from './Keyboard';
 
 import styles from './Game.module.scss';
@@ -12,7 +12,7 @@ export const Game = () => {
 
   return (
     <main className={styles.game}>
-      <Board />
+      <Gameboard />
       <Keyboard
         onBackspaceClick={() => removeLetter()}
         onEnterClick={() => submitGuess()}

@@ -1,4 +1,5 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import { initialState } from '@/redux/slices/wordleSlice';
 import { type GameState } from '@/types';
@@ -22,13 +23,14 @@ describe('Header', () => {
   });
 
   it('opens the instructions when the help button is clicked', async () => {
+    const user = userEvent.setup();
     renderWithProviders(<Header />);
 
-    fireEvent.click(screen.getByLabelText('Help'));
-    await waitFor(() => expect(screen.getByTestId('instructions-container')).toBeVisible());
+    await user.click(screen.getByLabelText('Help'));
+    await waitFor(() => expect(screen.getByTestId('instructions')).toBeVisible());
   });
 
-  it('resets the game when the restart button is clicked', () => {
+  it('resets the game when the restart button is clicked', async () => {
     const gameState: GameState = {
       ...initialState,
       message: {
@@ -39,6 +41,7 @@ describe('Header', () => {
       currentRowIndex: 5,
     };
 
+    const user = userEvent.setup();
     const { store } = renderWithProviders(<Header />, {
       preloadedState: {
         wordle: {
@@ -48,7 +51,7 @@ describe('Header', () => {
     });
 
     expect(store.getState().wordle).toEqual(gameState);
-    fireEvent.click(screen.getByLabelText('Restart'));
+    await user.click(screen.getByLabelText('Restart'));
     expect(store.getState().wordle).toEqual({
       ...initialState,
       solution: store.getState().wordle.solution,
