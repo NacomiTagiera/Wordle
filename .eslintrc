@@ -74,6 +74,11 @@
       "rules": {
         "import/no-default-export": "off"
       }
+    },
+    {
+      "files": ["src/**/*.test.ts?(x)"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended", "plugin:testing-library/react"]
     }
   ],
   "ignorePatterns": ["*.js", "*.jsx"]

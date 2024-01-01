@@ -40,6 +40,7 @@ export const Instructions = ({ open, onClose }: Props) => {
       onClose={onClose}
       TransitionComponent={Transition}
       transitionDuration={{ enter: 900, exit: 500 }}
+      data-testid='instructions'
     >
       <Card variant='outlined' component='section' className={styles.container}>
         <IconButton
@@ -91,7 +92,7 @@ export const Instructions = ({ open, onClose }: Props) => {
         <Divider variant='middle' />
         <p>
           Press the reset button (<RestartAlt fontSize='large' />) or reload the page for a new
-          puzzle to solve.
+          puzzle to.
         </p>
       </Card>
     </Dialog>
