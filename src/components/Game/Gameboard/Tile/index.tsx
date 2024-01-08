@@ -22,7 +22,7 @@ export const Tile = ({ letter, letterState, small }: Props) => {
       dataState = 'correct';
       break;
     case 'present':
-      ariaLabel = `${letter.toUpperCase()} present`;
+      ariaLabel = `${letter} present`;
       dataState = 'present';
       break;
   }
@@ -34,6 +34,7 @@ export const Tile = ({ letter, letterState, small }: Props) => {
       aria-roledescription='tile'
       aria-label={ariaLabel}
       data-state={dataState}
+      data-testid='tile'
     >
       {letter}
     </div>

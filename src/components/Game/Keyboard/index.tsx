@@ -60,7 +60,7 @@ export const Keyboard = ({ onBackspaceClick, onEnterClick, onLetterClick }: Prop
               return (
                 <Key
                   key={letterIndex}
-                  ariaLabel='backaspace'
+                  ariaLabel='backspace'
                   dataKey='←'
                   onClick={onBackspaceClick}
                   large

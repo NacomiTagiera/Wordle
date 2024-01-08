@@ -20,6 +20,7 @@ export const Key = ({ children, ariaLabel, dataKey, large, letterState, onClick 
       data-state={letterState}
       data-key={typeof children === 'string' ? children : dataKey}
       onClick={onClick}
+      data-testid='key'
     >
       {children}
     </button>

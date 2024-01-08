@@ -5,7 +5,7 @@ import { Row } from './Row';
 
 import styles from './Gameboard.module.scss';
 
-export const Board = () => {
+export const Gameboard = () => {
   const rows = useAppSelector(selectBoardRows);
 
   return (
@@ -14,7 +14,7 @@ export const Board = () => {
         {rows.map(({ letters, lettersState }, index) => (
           <Row
             key={index}
-            ariaLabel={'Row' + (index + 1)}
+            ariaLabel={'Row ' + (index + 1)}
             letters={letters}
             lettersState={lettersState}
           />

@@ -32,6 +32,7 @@ export const Message = () => {
       sx={{ mt: { xs: 7, md: 5 } }}
       open={!!message}
       onClose={() => resetMessage()}
+      data-testid='message'
     >
       <p
         className={styles.message}
