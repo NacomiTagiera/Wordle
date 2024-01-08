@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Close, RestartAlt } from '@mui/icons-material';
 import { Card, Dialog, Divider, IconButton, Slide, Typography, useMediaQuery } from '@mui/material';

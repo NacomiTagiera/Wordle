@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback, useEffect } from 'react';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 

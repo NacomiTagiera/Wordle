@@ -1,5 +1,3 @@
-'use client';
-
 import { useAppSelector } from '@/redux/hooks';
 import { selectBoardRows } from '@/redux/slices/wordleSlice';
 

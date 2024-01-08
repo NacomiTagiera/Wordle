@@ -1,5 +1,3 @@
-'use client';
-
 import { type LetterState } from '@/types';
 
 import styles from './Key.module.scss';
