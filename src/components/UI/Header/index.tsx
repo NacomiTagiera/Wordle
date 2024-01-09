@@ -19,11 +19,11 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <IconButton aria-label='Help' onClick={handleToggleInstructions}>
-        <Help className={styles.icon} />
+        <Help className={styles.header__icon} />
       </IconButton>
-      <h1 className={styles.title}>Wordle</h1>
+      <h1 className={styles.header__title}>Wordle</h1>
       <IconButton aria-label='Restart' onClick={() => resetGame()}>
-        <RestartAlt className={styles.icon} />
+        <RestartAlt className={styles.header__icon} />
       </IconButton>
       <Instructions open={instructionsOpen} onClose={handleToggleInstructions} />
     </header>

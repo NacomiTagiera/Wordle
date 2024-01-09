@@ -8,12 +8,12 @@
   height: var(--header-height);
   padding: 0px var(--header-padding-x);
 
-  .icon {
+  &__icon {
     color: #000;
-    font-size: 3.5rem;
+    font-size: 3.5rem !important;
   }
 
-  .title {
+  &__title {
     flex-grow: 2;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 3rem;

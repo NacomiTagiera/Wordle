@@ -19,26 +19,32 @@
     padding-bottom: 100%;
   }
 
-  &--small {
+  &_small {
     font-size: 2.3rem;
     padding-top: 1px;
   }
 
+  &[data-state='absent'],
+  &[data-state='correct'],
+  &[data-state='present'] {
+    color: #fff;
+  }
+
   &[data-state='absent'] {
     background-color: var(--color-absent);
-    color: #fff;
   }
   &[data-state='correct'] {
     background-color: var(--color-correct);
-    color: #fff;
   }
+
   &[data-state='empty'] {
     border: 2px solid var(--light-gray);
   }
+
   &[data-state='present'] {
     background-color: var(--color-present);
-    color: #fff;
   }
+
   &[data-state='tbd'] {
     border: 2px solid #000;
   }

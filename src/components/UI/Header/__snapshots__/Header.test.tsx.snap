@@ -13,7 +13,7 @@ exports[`Header matches the snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium header__icon css-i4bv87-MuiSvgIcon-root"
         data-testid="HelpIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -27,7 +27,7 @@ exports[`Header matches the snapshot 1`] = `
       />
     </button>
     <h1
-      class="title"
+      class="header__title"
     >
       Wordle
     </h1>
@@ -39,7 +39,7 @@ exports[`Header matches the snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium header__icon css-i4bv87-MuiSvgIcon-root"
         data-testid="RestartAltIcon"
         focusable="false"
         viewBox="0 0 24 24"

@@ -48,7 +48,7 @@ export const Keyboard = ({ onBackspaceClick, onEnterClick, onLetterClick }: Prop
   return (
     <div className={styles.keyboard}>
       {keyboardRows.map((row, index) => (
-        <div key={index} className={styles.row}>
+        <div key={index} className={styles.keyboard__row}>
           {Array.from(row).map((letter, letterIndex) => {
             if (letter === 'enter') {
               return (
@@ -69,7 +69,7 @@ export const Keyboard = ({ onBackspaceClick, onEnterClick, onLetterClick }: Prop
                 </Key>
               );
             } else if (letter === '') {
-              return <div key={letterIndex} className={keyStyles['key--empty']} />;
+              return <div key={letterIndex} className={keyStyles.key_empty} />;
             } else {
               return (
                 <Key
