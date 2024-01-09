@@ -40,7 +40,7 @@ export const Instructions = ({ open, onClose }: Props) => {
       transitionDuration={{ enter: 900, exit: 500 }}
       data-testid='instructions'
     >
-      <Card variant='outlined' component='section' className={styles.container}>
+      <Card variant='outlined' component='section' className={styles['instructions-container']}>
         <IconButton
           aria-label='Close'
           onClick={onClose}
@@ -52,13 +52,15 @@ export const Instructions = ({ open, onClose }: Props) => {
         >
           <Close sx={{ color: '#000', fontSize: '3rem' }} />
         </IconButton>
-        <h1 className={styles.title}>how to play</h1>
+        <h1 className={styles['instructions-container__title']}>how to play</h1>
         <Typography component='h2' variant='h4'>
           Guess the <strong>WORDLE</strong> in 6 tries.
         </Typography>
-        <ul className={styles.instructions}>
-          <li>Each guess must be a valid 5-letter word. Hit the enter button to submit.</li>
-          <li>
+        <ul className={styles['instructions-container__list']}>
+          <li className={styles['instructions-container__list__item']}>
+            Each guess must be a valid 5-letter word. Hit the enter button to submit.
+          </li>
+          <li className={styles['instructions-container__list__item']}>
             After each guess, the color of the tiles will change to show how close your guess was to
             the word.
           </li>
@@ -67,11 +69,15 @@ export const Instructions = ({ open, onClose }: Props) => {
           <strong>Examples</strong>
         </p>
         {examples.map((example, exampleIndex) => (
-          <div key={exampleIndex} className={styles.example} aria-label={example.word}>
+          <div
+            key={exampleIndex}
+            className={styles['instructions-container__example']}
+            aria-label={example.word}
+          >
             {Array.from(example.word).map((letter, letterIndex) => (
               <div
                 key={letterIndex}
-                className={styles['tile-container']}
+                className={styles['instructions-container__tile-container']}
                 aria-label={example.word + '-letters'}
               >
                 <Tile
@@ -81,7 +87,7 @@ export const Instructions = ({ open, onClose }: Props) => {
                 />
               </div>
             ))}
-            <p>
+            <p className={styles['instructions-container__example__paragraph']}>
               <strong>{example.description.charAt(0)}</strong>
               {example.description.substring(1)}
             </p>

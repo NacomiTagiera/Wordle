@@ -14,7 +14,7 @@ type Props = {
 export const Key = ({ children, ariaLabel, dataKey, large, letterState, onClick }: Props) => {
   return (
     <button
-      className={`${styles.key} ${large ? styles['key--large'] : ''}`}
+      className={`${styles.key} ${large ? styles.key_large : ''}`}
       type='button'
       aria-label={ariaLabel}
       data-state={letterState}

@@ -9,8 +9,8 @@ export const Gameboard = () => {
   const rows = useAppSelector(selectBoardRows);
 
   return (
-    <div className={styles.board__container}>
-      <div className={styles.board}>
+    <div className={styles.gameboard__container}>
+      <div className={styles.gameboard__board}>
         {rows.map(({ letters, lettersState }, index) => (
           <Row
             key={index}

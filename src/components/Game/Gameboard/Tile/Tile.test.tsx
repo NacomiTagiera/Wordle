@@ -31,6 +31,6 @@ describe('Tile', () => {
 
   it('injects proper class name when small prop is true', () => {
     render(<Tile letter='a' small />);
-    expect(screen.getByTestId('tile')).toHaveClass('tile--small');
+    expect(screen.getByTestId('tile')).toHaveClass('tile_small');
   });
 });

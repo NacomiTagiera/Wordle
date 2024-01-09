@@ -1,10 +1,10 @@
-.container {
+.instructions-container {
   font-family: sans-serif;
   font-size: 1.7rem;
   line-height: 2rem;
   padding: 0.8rem 2.4rem;
 
-  .title {
+  &__title {
     font: {
       family: var(--font-sans-serif);
       size: 3rem;
@@ -17,13 +17,13 @@
     }
   }
 
-  .instructions {
+  &__list {
     font-weight: 500;
     list-style-type: disc;
     margin-block: 1rem;
     padding-left: 2rem;
 
-    li {
+    &__item {
       margin-bottom: 4px;
 
       &::marker {
@@ -32,17 +32,17 @@
     }
   }
 
-  .tile-container {
+  &__tile-container {
     display: inline-block;
     height: 3.2rem;
     margin-right: 4px;
     width: 3.2rem;
   }
 
-  .example {
+  &__example {
     margin: 0.8rem 0 2rem 0;
 
-    p {
+    &__paragraph {
       line-height: 2rem;
       margin-top: 0.8rem;
     }

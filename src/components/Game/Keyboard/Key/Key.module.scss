@@ -25,30 +25,29 @@
     outline: 2px solid var(--outline);
   }
 
-  &:hover {
-    background-color: var(--light-gray);
+  &[data-state='absent'],
+  &[data-state='correct'],
+  &[data-state='present'] {
+    color: #fff;
   }
 
   &[data-state='absent'] {
     background-color: var(--color-absent);
-    color: #fff;
   }
 
   &[data-state='correct'] {
     background-color: var(--color-correct);
-    color: #fff;
   }
 
   &[data-state='present'] {
     background-color: var(--color-present);
-    color: #fff;
   }
 
-  &--empty {
+  &_empty {
     flex: 0.5;
   }
 
-  &--large {
+  &_large {
     flex: 1.5;
     font-size: 1.2rem;
   }

@@ -2,7 +2,7 @@
   height: var(--keyboard-height);
   margin: 0 8px;
 
-  .row {
+  &__row {
     display: flex;
     margin: 0 auto 8px;
     touch-action: manipulation;

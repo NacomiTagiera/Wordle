@@ -34,7 +34,7 @@ describe('Key', () => {
         A
       </Key>
     );
-    expect(screen.getByTestId('key')).toHaveClass('key--large');
+    expect(screen.getByTestId('key')).toHaveClass('key_large');
   });
 
   it('invokes onClick function when clicked', async () => {

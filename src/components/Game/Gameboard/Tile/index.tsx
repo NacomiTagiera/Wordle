@@ -29,7 +29,7 @@ export const Tile = ({ letter, letterState, small }: Props) => {
 
   return (
     <div
-      className={`${styles.tile} ${small ? styles['tile--small'] : ''}`}
+      className={`${styles.tile} ${small ? styles.tile_small : ''}`}
       role='img'
       aria-roledescription='tile'
       aria-label={ariaLabel}
